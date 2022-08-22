@@ -2,8 +2,24 @@ const express = require("express");
 const app = express();
 const compression = require("compression");
 const path = require("path");
+const mongoose = require("mongoose");
+const dotenv = require("dotenv");
+const morgan = require("morgan");
+const SECRET = require("../secrets.json");
+
+
+
+const productsRoute = require("./routes/products");
+const authRoute = require("./routes/auth");
+const orderRoute = require("./routes/order");
+
+
+
+
 
 app.use(express.json());
+app.use(compression());
+app.use(morgan("common"));
 ////// this is our socket.io boilerplate  //////
 const server = require("http").Server(app);
 let localOrHeroku;
@@ -42,21 +58,29 @@ app.use(cookieSessionMiddleware);
 io.use(function (socket, next) {
     cookieSessionMiddleware(socket.request, socket.request.res, next);
 });
-app.use(compression());
+dotenv.config();
+mongoose.connect(SECRET.MONGO_URL, () => {
+    console.log("Connected to MongoDB");
+});
+//ROUTES
+app.use("/api/products", productsRoute);
+app.use("/api/auth", authRoute);
+app.use("/api/order", orderRoute);
 
+
+
+
+
+//BOILERPLATE
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
-
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });
+////
 
 
 
-
-
-
-
-
+//SOCKET THINGS
 
 server.listen(process.env.PORT || 3001, function () {
     console.log("I'm listening.");
@@ -78,87 +102,4 @@ io.on("connection", async (socket) => {
     onlineUsers.push(onlineUser);
 
     console.log("Currently Online Users", onlineUsers);
-    const onlineUsersInfo = await db
-        .getUsersByIds(onlineUsers.map((e) => e.id))
-        .then((result) => result.rows);
-    io.emit("online-users", onlineUsersInfo);
-
-    const messageArray = await db.getRecentMessages().then((data) => data.rows);
-    socket.emit("messages", messageArray);
-    socket.on("new-message", async (text) => {
-        const { first_name, profilepic } = await db
-            .getUserById(userId)
-            .then((result) => result.rows[0]);
-
-        const message = await db
-            .addNewMessages(userId, first_name, profilepic, text)
-            .then((result) => result.rows);
-        io.emit("messages", message);
-    });
-
-    socket.on("get-all-direct-messages", async (paramsId) => {
-        const messages = await db
-            .findDirectMessages(paramsId, userId)
-            .then((result) => result.rows);
-
-        socket.emit("direct-messages", messages);
-    });
-
-    socket.on("new-direct-message", async (message) => {
-        const { first_name, profilepic } = await db
-            .getUserById(userId)
-            .then((result) => result.rows[0]);
-
-        let directMessage = await db
-            .addDirectMessage(
-                userId,
-                message.receiverId,
-                message.text,
-                profilepic,
-                first_name
-            )
-            .then((result) => result.rows[0]);
-
-        if (onlineUsers.find((e) => e.id === Number(message.receiverId))) {
-            const receiverSocketId = await onlineUsers.find(
-                (e) => e.id === Number(message.receiverId)
-            ).socket;
-            socket.join(receiverSocketId);
-            io.to(receiverSocketId).emit("direct-messages", directMessage);
-            io.to(receiverSocketId).emit("direct-message-notification", {
-                ...directMessage,
-                dm: true,
-            });
-        } else {
-            socket.emit("direct-messages", directMessage);
-        }
-
-        // io.to(receiverSocketId).emit(directMessage);
-    });
-
-    socket.on("Add to Friend", async (friendUserId) => {
-        onlineUsers.forEach(async (e) => {
-            if (e.id === +friendUserId) {
-                // eslint-disable-next-line no-unused-vars
-                const { email, password_hash, bio, ...userData } = await db
-                    .getUserById(userId)
-                    .then((data) => data.rows[0]);
-                io.to(e.socket).emit("Accept Friend", userData);
-            }
-        });
-    });
-
-    // this will run every time a socket disconnect
-    socket.on("disconnect", async () => {
-        console.log(
-            `Socket with id: ${socket.id} and userId:${userId} just disconnected!`
-        );
-        onlineUsers = await onlineUsers.filter(
-            (element) => element.id != userId
-        );
-        const onlineUsersInfo = await db
-            .getUsersByIds(onlineUsers.map((e) => e.id))
-            .then((result) => result.rows);
-        io.emit("online-users", onlineUsersInfo);
-    });
 });

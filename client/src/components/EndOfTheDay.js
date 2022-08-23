@@ -4,16 +4,27 @@ import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import useStatefulFields from "../hooks/use-stateful-fields";
-import useAuthSubmit from "../hooks/use-auth-submit";
+import { useNavigate } from "react-router-dom";
+import LastEndOfTheDay from "./LastEndOfTheDay";
+
 export default function EndOfTheDay() {
     const [values, onFormInputChange] = useStatefulFields();
-    const [error, onFormSubmit] = useAuthSubmit("/endoftheday", values);
-
+    let navigate = useNavigate();
+    const onFormSubmit = async (e) => {
+        e.preventDefault();
+        await fetch("/api/endoftheday/end", {
+            method: "POST",
+            body: JSON.stringify({ time: selectedDay, ...values }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        }).then((data) => data.json());
+        navigate("/");
+    };
+    // eslint-disable-next-line no-unused-vars
     const [selectedDay, setSelectedDay] = useState(new Date());
     const footer = selectedDay ? (
-        <p className="text-blue-500">
-            You selected {format(selectedDay, "P")}.
-        </p>
+        <p className="text-blue-500">Selected {format(selectedDay, "P")}.</p>
     ) : (
         <p className="text-rose-500">Please pick a day.</p>
     );
@@ -24,10 +35,11 @@ export default function EndOfTheDay() {
                 <div>
                     <DayPicker
                         mode="single"
+                        required
                         selected={selectedDay}
-                        onSelect={setSelectedDay}
                         footer={footer}
                     />
+                    <LastEndOfTheDay/>
                 </div>
                 <form className="flex flex-col gap-2">
                     <div>
@@ -62,7 +74,7 @@ export default function EndOfTheDay() {
                     </div>
                     <div>
                         <div className="mb-2 block">
-                            <Label htmlFor="cikisyapan" value="Who" />
+                            <Label htmlFor="cikisyapan" value="Whom" />
                         </div>
                         <TextInput
                             id="cikisyapan"
@@ -97,11 +109,11 @@ export default function EndOfTheDay() {
                             onChange={onFormInputChange}
                         />
                     </div>
-                    <Button onChange={onFormSubmit} type="submit">
+                    <Button onClick={(e) => onFormSubmit(e)} type="submit">
                         Submit
                     </Button>
                 </form>
-                {error && <p>FILL ALL LINES</p>}
+                {/* {error && <p>FILL ALL LINES</p>} */}
             </div>
         </>
     );

@@ -5,7 +5,7 @@ const path = require("path");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
-
+const endofthedayRoute = require("./routes/endoftheday");
 const productsRoute = require("./routes/products");
 const authRoute = require("./routes/auth");
 const orderRoute = require("./routes/order");
@@ -64,6 +64,7 @@ mongoose.connect(MONGO_URL, () => {
 app.use("/api/products", productsRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/order", orderRoute);
+app.use("/api/endoftheday", endofthedayRoute);
 
 //BOILERPLATE
 app.use(express.static(path.join(__dirname, "..", "client", "public")));

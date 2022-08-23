@@ -3,8 +3,6 @@ import { addBasket, removeBasket } from "../redux/orderSlice";
 
 export default function Product({ product, order }) {
     const dispatch = useDispatch();
-    // console.log(order);
-    // const basketItem = null
     const basketItem = order.items.find((item) => item.id === product.id);
 
     const addBasketButton = () => {

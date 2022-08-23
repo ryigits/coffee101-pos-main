@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const OrderSchema = new mongoose.Schema(
     {
-        orderItems: {
+        items: {
             type: [Object],
             default: [],
             required: true,

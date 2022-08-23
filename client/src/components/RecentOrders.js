@@ -1,3 +1,49 @@
+import { useEffect, useState } from "react";
+import OrderItem from "./OrderItem";
+import { Card, Button } from "flowbite-react";
 export default function RecentOrders() {
-    return <>Recent Orders</>;
+    const [orders, setOrders] = useState([]);
+    useEffect(() => {
+        fetch("/api/order/recentorders")
+            .then((res) => res.json())
+            .then((data) => {
+                setOrders(data);
+            });
+    }, []);
+
+    const deleteOrder = async (id) => {
+        await fetch("/api/order/deleteorder", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ id }),
+        })
+            .then((data) => data.json())
+            .then((newRecentOrders) => setOrders(newRecentOrders));
+    };
+
+    return (
+        <>
+            {orders.map((order, index) => (
+                <div key={index} className="min-h-fit m-2 w-60">
+                    <Card>
+                        <h1 className="text-center">
+                            Order {order._id.slice(0, 10)}
+                        </h1>
+                        <OrderItem items={order.items} />
+                        <p className="text-xs text-end italic">
+                            {new Date(order.createdAt).toString().slice(0, 24)}
+                        </p>
+                    </Card>
+                    <Button
+                        onClick={() => deleteOrder(order._id)}
+                        color="failure"
+                    >
+                        Delete
+                    </Button>
+                </div>
+            ))}
+        </>
+    );
 }

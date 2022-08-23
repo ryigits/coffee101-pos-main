@@ -33,7 +33,7 @@ export default function Pay({ order }) {
                     setShow(false);
                     setSuccess(false);
                     dispatch(resetBasket());
-                }, 1500);
+                }, 500);
             });
     };
 

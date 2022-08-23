@@ -29,7 +29,7 @@ export default function Product({ product, order }) {
     };
     return (
         <>
-            <div className="product w-30 flex-col justify-evenly bg-slate-100 font-medium text-xl text-center m-4 w-76 p-4 border-2 rounded-xl min-h-max">
+            <div className="product w-30 flex-row justify-between bg-slate-100 font-medium text-xl text-center m-4 w-76 p-4 border-2 rounded-xl min-h-max">
                 <h6 className="text-rose-600 text-2xl font-bold">
                     {product.title}
                 </h6>

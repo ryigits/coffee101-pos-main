@@ -1,12 +1,10 @@
 import { Button } from "flowbite-react";
+
 export default function NavBar({ handleMenu }) {
     return (
         <>
             <Button.Group>
-                <Button
-                    color="gray"
-                    onClick={() => handleMenu("Favourites")}
-                >
+                <Button color="gray" onClick={() => handleMenu("Favourites")}>
                     Favourites
                 </Button>
                 <Button color="gray" onClick={() => handleMenu("Must Coffee")}>

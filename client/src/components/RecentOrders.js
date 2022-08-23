@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import OrderItem from "./OrderItem";
 import { Card, Button } from "flowbite-react";
+import { cleanDate } from "../helpers";
+
 export default function RecentOrders() {
     const [orders, setOrders] = useState([]);
     useEffect(() => {
@@ -33,7 +35,7 @@ export default function RecentOrders() {
                         </h1>
                         <OrderItem items={order.items} />
                         <p className="text-xs text-end italic">
-                            {new Date(order.createdAt).toString().slice(0, 24)}
+                            {cleanDate(order.createdAt)}
                         </p>
                     </Card>
                     <Button

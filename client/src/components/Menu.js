@@ -41,13 +41,20 @@ export default function Menu({ order }) {
     };
     return (
         <>
-            <div className="w-full ml-60">
-                <NavBar handleMenu={handleMenu} />
+            <div className="w-full">
+                <div className="ml-60">
+                    <NavBar handleMenu={handleMenu} />
+                </div>
+                <div className="ml-20">
+                    {menu.map((product) => (
+                        <Product
+                            key={product.id}
+                            order={order}
+                            product={product}
+                        />
+                    ))}
+                </div>
             </div>
-
-            {menu.map((product) => (
-                <Product key={product.id} order={order} product={product} />
-            ))}
         </>
     );
 }

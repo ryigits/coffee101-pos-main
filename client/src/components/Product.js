@@ -27,12 +27,12 @@ export default function Product({ product, order }) {
     };
     return (
         <>
-            <div className="product w-30 flex-row justify-between bg-slate-100 font-medium text-xl text-center m-4 w-76 p-4 border-2 rounded-xl min-h-max">
-                <h6 className="text-rose-600 text-2xl font-bold">
+            <div className="product w-80 inline-block bg-slate-100 font-medium text-lg text-center m-2 p-2 border-2 rounded-xl min-h-max">
+                <h6 className="text-rose-600 text-xl font-bold">
                     {product.title}
                 </h6>
                 <div className="price font-medium ">
-                    <h3>${product.price}</h3>
+                    <h3>₺{product.price}</h3>
                 </div>
                 <div className="actions font-light mt-2">
                     <button

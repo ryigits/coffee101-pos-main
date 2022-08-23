@@ -1,5 +1,9 @@
 const moneyFormat = (money) => {
-    return money.toLocaleString();
+    return money.toLocaleString() + " TL";
 };
 
-export { moneyFormat };
+const cleanDate = (date) => {
+    return new Date(date).toString().slice(0, 24);
+};
+
+export { moneyFormat, cleanDate };

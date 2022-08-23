@@ -1,10 +1,9 @@
 /*eslint no-unused-vars: "error"*/
 import Total from "./components/Total";
-
+import EndOfTheDay from "./components/EndOfTheDay";
 import Basket from "./components/Basket";
 import Logo from "./components/Logo";
 import Menu from "./components/Menu";
-
 import RecentOrders from "./components/RecentOrders";
 import DropDownMenu from "./components/DropDownMenu";
 import { Link } from "react-router-dom";
@@ -14,8 +13,8 @@ import { Routes, Route } from "react-router-dom";
 function App() {
     const order = useSelector((state) => state.order);
     return (
-        <div className="bg-indigo-200 min-h-screen flex flex-wrap py-4">
-            <div className="grid grid-cols-6 justify-items-center  gap-2 h-54 sticky bg-indigo-200 top-0 z-50 w-full border-solid border-y-red-600/50 border-b-2 py-2">
+        <div className="bg-indigo-200 min-h-screen py-4">
+            <div className="grid grid-cols-6 justify-items-center  gap-2 h-1/3 sticky bg-indigo-200 top-0 z-50 w-full border-solid border-y-red-600/50 border-b-2 py-2">
                 <div className="col-start-1 col-end-2  row-start-1">
                     <DropDownMenu />
                 </div>
@@ -31,10 +30,11 @@ function App() {
                     <Total />
                 </div>
             </div>
-            <div className="flex flex-wrap content-start justify-evenly min-h-screen">
+            <div className="flex w-full justify-center">
                 <Routes>
                     <Route index element={<Menu order={order} />} />
                     <Route path="recent-orders" element={<RecentOrders />} />
+                    <Route path="end-of-the-day" element={<EndOfTheDay />} />
                 </Routes>
             </div>
         </div>

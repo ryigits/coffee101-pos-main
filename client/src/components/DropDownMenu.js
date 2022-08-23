@@ -7,7 +7,9 @@ export default function DropDownMenu() {
                 <Dropdown.Item>
                     <Link to="/recent-orders">Recent Orders</Link>
                 </Dropdown.Item>
-                <Dropdown.Item>End of The Day</Dropdown.Item>
+                <Dropdown.Item>
+                    <Link to="/end-of-the-day">End of The Day</Link>
+                </Dropdown.Item>
                 <Dropdown.Item>Sign out</Dropdown.Item>
             </Dropdown>
         </>

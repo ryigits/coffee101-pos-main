@@ -5,17 +5,10 @@ const path = require("path");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
-const SECRET = require("../secrets.json");
-
-
 
 const productsRoute = require("./routes/products");
 const authRoute = require("./routes/auth");
 const orderRoute = require("./routes/order");
-
-
-
-
 
 app.use(express.json());
 app.use(compression());
@@ -24,7 +17,7 @@ app.use(morgan("common"));
 const server = require("http").Server(app);
 let localOrHeroku;
 if (process.env.NODE_ENV === "production") {
-    localOrHeroku = "https://frienz-network.herokuapp.com";
+    localOrHeroku = "https://coffee101-pos.herokuapp.com";
 } else {
     localOrHeroku = "http://localhost:3000";
 }
@@ -35,15 +28,19 @@ const io = require("socket.io")(server, {
 //////////////////////////////////////////////
 
 let sessionSecret = process.env.SESSION_SECRET;
+let MONGO_URL = process.env.MONGO_URL;
 
 if (!sessionSecret) {
     sessionSecret = require("./secrets.json").SESSION_SECRET;
+    MONGO_URL = require("./secrets.json").MONGO_URL;
 }
 
 if (process.env.NODE_ENV == "production") {
     sessionSecret = process.env.SESSION_SECRET;
+    MONGO_URL = process.env.MONGO_URL;
 } else {
     sessionSecret = require("./secrets.json").SESSION_SECRET;
+    MONGO_URL = require("./secrets.json").MONGO_URL;
 }
 const COOKIE_SECRET =
     process.env.COOKIE_SECRET || require("./secrets.json").COOKIE_SECRET;
@@ -59,7 +56,8 @@ io.use(function (socket, next) {
     cookieSessionMiddleware(socket.request, socket.request.res, next);
 });
 dotenv.config();
-mongoose.connect(SECRET.MONGO_URL, () => {
+
+mongoose.connect(MONGO_URL, () => {
     console.log("Connected to MongoDB");
 });
 //ROUTES
@@ -67,18 +65,12 @@ app.use("/api/products", productsRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/order", orderRoute);
 
-
-
-
-
 //BOILERPLATE
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });
 ////
-
-
 
 //SOCKET THINGS
 
@@ -97,8 +89,7 @@ io.on("connection", async (socket) => {
     // );
 
     const onlineUser = { id: userId, socket: socket.id };
-    // if (onlineUsers.every((element) => element.id !== userId)) {
-    // } not necessary !!!!
+
     onlineUsers.push(onlineUser);
 
     console.log("Currently Online Users", onlineUsers);

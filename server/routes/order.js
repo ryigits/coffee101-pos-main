@@ -1,5 +1,5 @@
 const moment = require("moment");
-
+const Endoftheday = require("../models/Endoftheday");
 const router = require("express").Router();
 const Order = require("../models/Order");
 
@@ -24,7 +24,7 @@ router.get("/recentorders", async (req, res) => {
     const result = await Order.find({
         createdAt: { $lt: Date.now(), $gt: yesterday },
     })
-        .limit(10)
+        .limit(5)
         .sort({ createdAt: -1 })
         .exec();
     res.status(200).json(result);
@@ -42,6 +42,30 @@ router.post("/deleteorder", async (req, res) => {
             .sort({ createdAt: -1 })
             .exec();
         res.status(200).json(result);
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.get("/currentrevenue", async (req, res) => {
+    try {
+        const lastday = await Endoftheday.find({
+            createdAt: { $lt: new Date() },
+        })
+            .sort({
+                createdAt: -1,
+            })
+            .limit(1);
+        const currentOrders = await Order.find({
+            createdAt: { $gt: lastday[0].createdAt },
+        }).sort({
+            createdAt: -1,
+        });
+        const calculateRevenue = (currentOrders) => {
+            return currentOrders.reduce((prev, current) => prev + current.total, 0);
+        };
+
+        res.status(200).json(calculateRevenue(currentOrders));
     } catch (err) {
         console.log(err);
     }

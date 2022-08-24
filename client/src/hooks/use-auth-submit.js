@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 export default function useAuthSubmit(url, values) {
+
     const [error, setError] = useState("");
 
     const onSubmit = (e) => {
@@ -17,7 +18,7 @@ export default function useAuthSubmit(url, values) {
                 if (!data.success && data.message) {
                     setError(data.message);
                 } else {
-                    // basarili
+                    location.replace("/");
                 }
             })
             .catch((err) => {

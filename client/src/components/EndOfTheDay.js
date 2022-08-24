@@ -22,12 +22,9 @@ export default function EndOfTheDay() {
         navigate("/");
     };
     // eslint-disable-next-line no-unused-vars
-    const [selectedDay, setSelectedDay] = useState(new Date());
-    const footer = selectedDay ? (
-        <p className="text-blue-500">Selected {format(selectedDay, "P")}.</p>
-    ) : (
-        <p className="text-rose-500">Please pick a day.</p>
-    );
+    const [selectedDay, setSelectedDay] = useState(
+        new Date(new Date().valueOf() - 1000 * 60 * 60 * 2)
+    ); // select day from two hours ago
 
     return (
         <>
@@ -37,7 +34,6 @@ export default function EndOfTheDay() {
                         mode="single"
                         required
                         selected={selectedDay}
-                        footer={footer}
                     />
                     <LastEndOfTheDay/>
                 </div>

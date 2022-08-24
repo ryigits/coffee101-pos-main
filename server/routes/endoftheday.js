@@ -5,10 +5,17 @@ const nodemailer = require("nodemailer");
 const MAIL_SECRET =
     process.env.MAIL_SECRET || require("../secrets.json").MAIL_SECRET;
 
-
 router.post("/end", async (req, res) => {
     try {
         const calculateCiro = (lastday, currentday) => {
+            if (!lastday) {
+                return (
+                    +currentday.kasadancikis +
+                    +currentday.kasafix +
+                    +currentday.finansbank +
+                    +currentday.harcama
+                );
+            }
             return (
                 +currentday.kasadancikis +
                 +currentday.kasafix +
@@ -26,7 +33,7 @@ router.post("/end", async (req, res) => {
                 createdAt: -1,
             })
             .limit(1);
-
+        console.log(lastday);
         const _currentday = await new Endoftheday({
             tarih: new Date(currentday.time).toString().slice(0, 24),
             finansbank: currentday.finansbank,
@@ -49,8 +56,17 @@ router.post("/end", async (req, res) => {
         const mailData = {
             from: "ygtsez@gmail.com",
             to: `ryigit@gmail.com`,
-            subject: "Tarih Ciro",
-            html: `Bugun Cirosu <p style="color:red;font-size:25px;">${endoftheday}</p> `,
+            subject: "Coffee101 Yuzyil Daily Revenue",
+            html: `<p style="color:orange;font-size:25px;">${new Date(
+                currentday.time
+            )
+                .toString()
+                .slice(
+                    0,
+                    15
+                )} Daily Revenue => </p> <p style="color:red;font-size:25px;">${
+                endoftheday.ciro
+            } TL </p> `,
         };
 
         await transporter.sendMail(mailData, function (err) {
@@ -64,7 +80,6 @@ router.post("/end", async (req, res) => {
                 console.log("mail created");
             }
         });
-
 
         res.status(200).json(endoftheday);
     } catch (err) {

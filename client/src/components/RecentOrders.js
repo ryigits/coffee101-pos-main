@@ -30,9 +30,10 @@ export default function RecentOrders() {
             {orders.map((order, index) => (
                 <div key={index} className="min-h-fit m-2 w-60">
                     <Card>
-                        <h1 className="text-center">
+                        <h1 className="text-center text-xs">
                             Order {order._id.slice(0, 10)}
                         </h1>
+                        <p className="text-center text-lg text-purple-400">{order.total} TL</p>
                         <OrderItem items={order.items} />
                         <p className="text-xs text-end italic">
                             {cleanDate(order.createdAt)}

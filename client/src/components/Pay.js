@@ -1,4 +1,4 @@
-import { Button, Modal, Alert } from "flowbite-react";
+import { Button, Modal, Alert, Spinner } from "flowbite-react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { resetBasket } from "../redux/orderSlice";
@@ -7,7 +7,7 @@ export default function Pay({ order }) {
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const [success, setSuccess] = useState(false);
-
+    const [loading, setLoading] = useState(false);
     const onClick = () => {
         setShow(true);
     };
@@ -16,6 +16,7 @@ export default function Pay({ order }) {
     };
 
     const onPay = (type) => {
+        setLoading(true);
         const paidOrder = { ...order, payment: type };
         fetch("/api/order/createOrder", {
             method: "POST",
@@ -26,14 +27,14 @@ export default function Pay({ order }) {
             },
         })
             .then((data) => data.json())
-            .then((result) => {
+            .then(() => {
+                setLoading(false);
                 setSuccess(true);
-                console.log(result);
                 setTimeout(() => {
                     setShow(false);
                     setSuccess(false);
                     dispatch(resetBasket());
-                }, 500);
+                }, 1000);
             });
     };
 
@@ -76,7 +77,7 @@ export default function Pay({ order }) {
                                 </Button>
                             </div>
                             {success && (
-                                <div className="ml-28 mt-4">
+                                <div className=" mt-4 w-full">
                                     <Alert withBorderAccent={true} color="info">
                                         <span>
                                             <span className="font-medium">
@@ -84,6 +85,24 @@ export default function Pay({ order }) {
                                             </span>
                                             <br></br>
                                             Order has been recorded !
+                                        </span>
+                                    </Alert>
+                                </div>
+                            )}
+                            {loading && (
+                                <div className="w-full mt-4">
+                                    <Alert
+                                        withBorderAccent={true}
+                                        color="warning"
+                                    >
+                                        <span>
+                                            <Spinner
+                                                color="warning"
+                                                size="md"
+                                            />
+                                            <span className="font-medium">
+                                                Please wait.....
+                                            </span>
                                         </span>
                                     </Alert>
                                 </div>

@@ -11,10 +11,11 @@ export default function LastEndOfTheDay() {
             });
     }, []);
 
+
     return (
         <>
             <div className="text-center">
-                Previous was on <div className="text-rose-500">{last.tarih}</div>
+                Previous was on <div className="text-rose-500">{last.tarih?.slice(0,10)}</div>
             </div>
         </>
     );

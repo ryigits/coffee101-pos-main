@@ -1,7 +1,6 @@
 import Item from "./Item";
 
 export default function OrderItem({ items }) {
-    console.log(items);
     return (
         <>
             {items.map((item) => (

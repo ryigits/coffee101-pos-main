@@ -11,12 +11,18 @@ export default function EndOfTheDay() {
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
     let navigate = useNavigate();
+
+    // eslint-disable-next-line no-unused-vars
+    const [selectedDay, setSelectedDay] = useState(
+        new Date(new Date().valueOf() - 1000 * 60 * 60 * 2) // 2 saatlik tolerans
+    );
+
     const onFormSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
         await fetch("/api/endoftheday/end", {
             method: "POST",
-            body: JSON.stringify({ time: endofthedayTime, ...values }),
+            body: JSON.stringify({ time: new Date(), ...values }),
             headers: {
                 "Content-Type": "application/json",
             },
@@ -27,13 +33,6 @@ export default function EndOfTheDay() {
             });
         setTimeout(() => navigate("/"), 3000);
     };
-
-    // eslint-disable-next-line no-unused-vars
-    const [selectedDay, setSelectedDay] = useState(
-        new Date(new Date().valueOf() - 1000 * 60 * 60 * 2) // 2 saatlik tolerans
-    );
-    // eslint-disable-next-line no-unused-vars
-    const [endofthedayTime, setEndofthedayTime] = useState(new Date()); 
 
     return (
         <>

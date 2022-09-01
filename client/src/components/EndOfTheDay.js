@@ -1,6 +1,5 @@
 import { Label, TextInput, Button } from "flowbite-react";
 import { useState } from "react";
-import { format } from "date-fns";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import useStatefulFields from "../hooks/use-stateful-fields";
@@ -30,12 +29,8 @@ export default function EndOfTheDay() {
         <>
             <div className="grid grid-cols-2 gap-8 h-2/3">
                 <div>
-                    <DayPicker
-                        mode="single"
-                        required
-                        selected={selectedDay}
-                    />
-                    <LastEndOfTheDay/>
+                    <DayPicker mode="single" required selected={selectedDay} />
+                    <LastEndOfTheDay />
                 </div>
                 <form className="flex flex-col gap-2">
                     <div>

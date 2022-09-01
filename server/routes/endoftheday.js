@@ -55,8 +55,10 @@ router.post("/end", async (req, res) => {
 
         const mailData = {
             from: "ygtsez@gmail.com",
-            to: `ryigit@gmail.com`,
-            subject: "Coffee101 Yuzyil Daily Revenue",
+            to: `ryigit@gmail.com , boranaycicekflcn@gmail.com , candasmisir@gmail.com `,
+            subject: `${new Date(currentday.time)
+                .toString()
+                .slice(0, 15)} Coffee101 Yuzyil Revenue`,
             html: `<p style="color:orange;font-size:25px;">${new Date(
                 currentday.time
             )
@@ -64,7 +66,7 @@ router.post("/end", async (req, res) => {
                 .slice(
                     0,
                     15
-                )} Daily Revenue => </p> <p style="color:red;font-size:25px;">${
+                )} Daily Revenue </p> <p style="color:red;font-size:25px;">${
                 endoftheday.ciro
             } TL </p> `,
         };

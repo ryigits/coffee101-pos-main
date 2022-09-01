@@ -1,4 +1,4 @@
-import { Label, TextInput, Button } from "flowbite-react";
+import { Label, TextInput, Button, Alert, Spinner } from "flowbite-react";
 import { useState } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
@@ -8,22 +8,32 @@ import LastEndOfTheDay from "./LastEndOfTheDay";
 
 export default function EndOfTheDay() {
     const [values, onFormInputChange] = useStatefulFields();
+    const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
     let navigate = useNavigate();
     const onFormSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         await fetch("/api/endoftheday/end", {
             method: "POST",
-            body: JSON.stringify({ time: selectedDay, ...values }),
+            body: JSON.stringify({ time: endofthedayTime, ...values }),
             headers: {
                 "Content-Type": "application/json",
             },
-        }).then((data) => data.json());
-        navigate("/");
+        })
+            .then((data) => data.json())
+            .then(() => {
+                setSuccess(true);
+            });
+        setTimeout(() => navigate("/"), 3000);
     };
+
     // eslint-disable-next-line no-unused-vars
     const [selectedDay, setSelectedDay] = useState(
-        new Date(new Date().valueOf() - 1000 * 60 * 60 * 2)
-    ); // select day from two hours ago
+        new Date(new Date().valueOf() - 1000 * 60 * 60 * 2) // 2 saatlik tolerans
+    );
+    // eslint-disable-next-line no-unused-vars
+    const [endofthedayTime, setEndofthedayTime] = useState(new Date()); 
 
     return (
         <>
@@ -31,6 +41,31 @@ export default function EndOfTheDay() {
                 <div>
                     <DayPicker mode="single" required selected={selectedDay} />
                     <LastEndOfTheDay />
+                    {loading && (
+                        <div className="w-full mt-4">
+                            <Alert withBorderAccent={true} color="warning">
+                                <span>
+                                    <Spinner color="warning" size="md" />
+                                    <span className="font-medium">
+                                        Please wait.....
+                                    </span>
+                                </span>
+                            </Alert>
+                        </div>
+                    )}
+                    {success && (
+                        <div className=" mt-4 w-full">
+                            <Alert withBorderAccent={true} color="info">
+                                <span>
+                                    <span className="font-medium">
+                                        Successfull
+                                    </span>
+                                    <br></br>
+                                    Order has been recorded !
+                                </span>
+                            </Alert>
+                        </div>
+                    )}
                 </div>
                 <form className="flex flex-col gap-2">
                     <div>
@@ -100,10 +135,15 @@ export default function EndOfTheDay() {
                             onChange={onFormInputChange}
                         />
                     </div>
-                    <Button onClick={(e) => onFormSubmit(e)} type="submit">
+                    <Button
+                        disabled={loading}
+                        onClick={(e) => onFormSubmit(e)}
+                        type="submit"
+                    >
                         Submit
                     </Button>
                 </form>
+
                 {/* {error && <p>FILL ALL LINES</p>} */}
             </div>
         </>

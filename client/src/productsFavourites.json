@@ -80,6 +80,11 @@
         "price": 20
     },
     {
+        "id": 69,
+        "title": "Bubble Tea",
+        "price": 27
+    },
+    {
         "id": 68,
         "title": "Beles Kart",
         "price": 0

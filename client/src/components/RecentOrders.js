@@ -28,23 +28,26 @@ export default function RecentOrders() {
     return (
         <>
             {orders.map((order, index) => (
-                <div key={index} className="min-h-fit m-2 w-60">
+                <div key={index} className="m-2 justify-center w-60">
                     <Card>
                         <h1 className="text-center text-xs">
                             Order {order._id.slice(0, 10)}
                         </h1>
-                        <p className="text-center text-lg text-purple-400">{order.total} TL</p>
+                        <p className="text-center text-lg text-purple-400">
+                            {order.total} TL
+                        </p>
                         <OrderItem items={order.items} />
                         <p className="text-xs text-end italic">
                             {cleanDate(order.createdAt)}
                         </p>
+                        <Button
+                            onClick={() => deleteOrder(order._id)}
+                            color="failure"
+                            size="xs"
+                        >
+                            Delete
+                        </Button>
                     </Card>
-                    <Button
-                        onClick={() => deleteOrder(order._id)}
-                        color="failure"
-                    >
-                        Delete
-                    </Button>
                 </div>
             ))}
         </>

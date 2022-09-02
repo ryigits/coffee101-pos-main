@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import RecentOrders from "./components/RecentOrders";
+import MostSold from "./components/MostSold";
 import { format } from "date-fns";
 
 export default function Admin() {
@@ -33,11 +34,15 @@ export default function Admin() {
                     <p className="text-3xl font-medium">
                         Current Revenue: {currentRevenue} TL
                     </p>
-                    <button className="hover:text-rose-600" onClick={onLogout}>Logout</button>
+                    <button className="hover:text-rose-600" onClick={onLogout}>
+                        Logout
+                    </button>
                 </div>
-
-                <div className="col-start-1 col-end-4 row-start-2 row-end-4 max-h-min flex border-purple-500 border-2">
+                <div className="col-start-2 col-end-4 row-start-1 row-end-2 flex flex-wrap h-10 text-xs">
                     <RecentOrders />
+                </div>
+                <div className="col-start-1 bg-amber-200 col-end-4 row-start-2 row-end-4 flex flex-wrap border-purple-500 border-2 text-xs">
+                    <MostSold />
                 </div>
             </div>
         </>

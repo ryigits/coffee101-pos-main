@@ -11,11 +11,16 @@ export default function LastEndOfTheDay() {
             });
     }, []);
 
+    console.log(last);
 
     return (
         <>
-            <div className="text-center">
-                Previous was on <div className="text-rose-500">{last.tarih?.slice(0,10)}</div>
+            <div className="text-left">
+                <div className="underline">Last one:</div>
+                <div className="text-rose-500">
+                    {last.tarih?.slice(0, 10)}
+                </div>{" "}
+                <div className="text-green-500">{last.cikisyapan}</div>
             </div>
         </>
     );

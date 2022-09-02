@@ -38,7 +38,7 @@ export default function EndOfTheDay() {
         <>
             <div className="grid grid-cols-2 gap-8 h-2/3">
                 <div>
-                    <DayPicker mode="single" required selected={selectedDay} />
+                    <DayPicker mode="single" selected={selectedDay} />
                     <LastEndOfTheDay />
                     {loading && (
                         <div className="w-full mt-4">
@@ -117,7 +117,7 @@ export default function EndOfTheDay() {
                         <TextInput
                             id="harcama"
                             name="harcama"
-                            cikisyapantype="number"
+                            type="number"
                             required={true}
                             onChange={onFormInputChange}
                         />
@@ -142,7 +142,6 @@ export default function EndOfTheDay() {
                         Submit
                     </Button>
                 </form>
-
                 {/* {error && <p>FILL ALL LINES</p>} */}
             </div>
         </>

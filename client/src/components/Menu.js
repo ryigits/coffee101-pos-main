@@ -27,7 +27,7 @@ export default function Menu({ order }) {
                             setMenu(productsPackage.slice(43, 47));
                             break;
                         case "Appetizers":
-                            setMenu(productsPackage.slice(48, 53));
+                            setMenu(productsPackage.slice(47, 53));
                             break;
                         case "Add Drop":
                             setMenu(productsPackage.slice(53, 56));

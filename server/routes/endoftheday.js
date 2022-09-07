@@ -33,7 +33,6 @@ router.post("/end", async (req, res) => {
                 createdAt: -1,
             })
             .limit(1);
-        console.log(lastday);
         const _currentday = await new Endoftheday({
             tarih: new Date(currentday.time).toString().slice(0, 24),
             finansbank: currentday.finansbank,
@@ -58,7 +57,7 @@ router.post("/end", async (req, res) => {
             to: `ryigit@gmail.com , boranaycicekflcn@gmail.com , candasmisir@gmail.com `,
             subject: `${new Date(currentday.time)
                 .toString()
-                .slice(0, 10)} Coffee101 Yuzyil Revenue`,
+                .slice(0, 10)} Yuzyil Revenue`,
             html: `<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional //EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 
@@ -317,7 +316,7 @@ router.post("/end", async (req, res) => {
                               <div class="v-color v-text-align v-line-height" style="line-height: 140%; text-align: center; word-wrap: break-word;">
                                 <p style="font-size: 14px; line-height: 140%;"><span style="font-size: 24px; line-height: 33.6px;"><span style="color: #e03e2d; font-size: 24px; line-height: 33.6px;">Revenue :</span>${
     endoftheday.ciro
-}</span>
+} TL </span>
                                 </p>
                               </div>
 

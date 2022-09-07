@@ -14,7 +14,6 @@ export default function Pay({ order }) {
     const onClose = () => {
         setShow(false);
     };
-
     const onPay = (type) => {
         setLoading(true);
         const paidOrder = { ...order, payment: type };
@@ -42,7 +41,7 @@ export default function Pay({ order }) {
         <>
             <div className="items-center">
                 <Button
-                    disabled={order.total === 0}
+                    disabled={order.items.length === 0}
                     size="lg"
                     color="success"
                     onClick={onClick}

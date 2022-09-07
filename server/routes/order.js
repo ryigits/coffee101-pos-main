@@ -24,7 +24,7 @@ router.get("/recentorders", async (req, res) => {
     const result = await Order.find({
         createdAt: { $lt: Date.now() },
     })
-        .limit(3)
+        .limit(5)
         .sort({ createdAt: -1 })
         .exec();
     res.status(200).json(result);

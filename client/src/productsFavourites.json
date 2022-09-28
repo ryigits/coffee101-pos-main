@@ -93,5 +93,15 @@
         "id": 68,
         "title": "Beles Kart",
         "price": 0
+    },
+    {
+        "id": 70,
+        "title": "Morning Americano Curve",
+        "price": 10
+    },
+    {
+        "id": 71,
+        "title": "Morning Milky Americano Curve",
+        "price": 12
     }
 ]

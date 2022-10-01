@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
-import RecentOrders from "./components/RecentOrders";
+
 import MostSold from "./components/MostSold";
 import { format } from "date-fns";
 
 export default function Admin() {
-    const [currentRevenue, setCurrentRevenue] = useState(null);
+    const [currentRevenueOdtu, setCurrentRevenueOdtu] = useState(null);
+    const [currentRevenueYuzyil, setCurrentRevenueYuzyil] = useState(null);
     useEffect(() => {
-        fetch("/api/order/currentrevenue")
+        fetch("/api/order/currentrevenueodtu")
             .then((data) => data.json())
             .then((revenue) => {
-                setCurrentRevenue(revenue);
+                setCurrentRevenueOdtu(revenue);
+            });
+        fetch("/api/order/currentrevenueyuzyil")
+            .then((data) => data.json())
+            .then((revenue) => {
+                setCurrentRevenueYuzyil(revenue);
             });
     }, []);
 
@@ -31,15 +37,18 @@ export default function Admin() {
                         Coffee101 Monitor
                     </h1>
                     <p>{format(new Date(), "PP")}</p>
-                    <p className="text-3xl font-medium">
-                        Current Revenue: {currentRevenue} TL
+                    <p className="text-2xl font-medium">
+                        ODTU : {currentRevenueOdtu} TL
+                    </p>
+                    <p className="text-2xl font-medium">
+                    Yuzyil : {currentRevenueYuzyil} TL
                     </p>
                     <button className="hover:text-rose-600" onClick={onLogout}>
                         Logout
                     </button>
                 </div>
                 <div className="col-start-2 col-end-4 row-start-1 row-end-2 flex flex-wrap h-10 text-xs">
-                    <RecentOrders />
+                    Daha sonra ozellik eklenecek...
                 </div>
                 <div className="col-start-1 bg-amber-200 col-end-4 row-start-2 row-end-4 flex flex-wrap border-purple-500 border-2 text-xs">
                     <MostSold />

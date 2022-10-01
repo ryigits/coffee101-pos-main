@@ -1,72 +1,4 @@
-const router = require("express").Router();
-const Endoftheday = require("../models/Endoftheday");
-// const {calculateCiro} = require("../helpers");
-const nodemailer = require("nodemailer");
-const MAIL_SECRET =
-    process.env.MAIL_SECRET || require("../secrets.json").MAIL_SECRET;
-
-router.post("/end", async (req, res) => {
-    try {
-        const calculateCiro = (lastday, currentday) => {
-            if (!lastday) {
-                return (
-                    +currentday.kasadancikis +
-                    +currentday.kasafix +
-                    +currentday.finansbank +
-                    +currentday.ziraatbank +
-                    +currentday.harcama
-                );
-            }
-            return (
-                +currentday.kasadancikis +
-                +currentday.kasafix +
-                +currentday.finansbank +
-                +currentday.ziraatbank +
-                +currentday.harcama -
-                lastday.kasafix
-            );
-        };
-
-        const currentday = req.body;
-        if (req.session.location === "yuzyil") {
-            currentday.ziraatbank = 0;
-        }
-        const lastday = await Endoftheday.find({
-            createdAt: { $lt: currentday.time },
-            location: req.session.location,
-        })
-            .sort({
-                createdAt: -1,
-            })
-            .limit(1);
-        const _currentday = await new Endoftheday({
-            tarih: new Date(currentday.time).toString().slice(0, 24),
-            finansbank: currentday.finansbank,
-            ziraatbank: currentday.ziraatbank,
-            kasadancikis: currentday.kasadancikis,
-            cikisyapan: currentday.cikisyapan,
-            harcama: currentday.harcama,
-            kasafix: currentday.kasafix,
-            ciro: calculateCiro(lastday[0], currentday),
-            location: req.session.location,
-        });
-        const endoftheday = await _currentday.save();
-
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: "metucoffee101",
-                pass: MAIL_SECRET,
-            },
-        });
-        //, boranaycicekflcn@gmail.com , candasmisir@gmail.com
-        const mailData = {
-            from: "metucoffee101@gmail.com",
-            to: `ryigit@gmail.com  `,
-            subject: `${new Date(currentday.time).toString().slice(0, 10)} ${
-                req.session.location
-            } revenue`,
-            html: `<!doctype html>
+<!doctype html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -395,7 +327,7 @@ router.post("/end", async (req, res) => {
     </style>
   </head>
   <body>
-    <span class="preheader">${req.session.location} cirosu:${endoftheday.ciro} TL</span>
+    <span class="preheader">${req.session.location} cirosu:${endoftheday.ciro}</span>
     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="body">
       <tr>
         <td>&nbsp;</td>
@@ -420,7 +352,7 @@ router.post("/end", async (req, res) => {
                                 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                   <tbody>
                                     <tr>
-                                      <td>${endoftheday.ciro} TL </td>
+                                      <td>${endoftheday.ciro}</td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -463,38 +395,4 @@ router.post("/end", async (req, res) => {
       </tr>
     </table>
   </body>
-</html>`,
-        };
-
-        await transporter.sendMail(mailData, function (err) {
-            if (err) {
-                console.log(
-                    "%cregister.js line:36 err",
-                    "color: #007acc;",
-                    err
-                );
-            } else {
-                console.log("mail created and sent");
-            }
-        });
-
-        res.status(200).json(endoftheday);
-    } catch (err) {
-        console.log(err);
-    }
-});
-
-router.get("/last", async (req, res) => {
-    const lastday = await Endoftheday.find({
-        createdAt: { $lt: new Date() },
-        location: req.session.location,
-    })
-        .sort({
-            createdAt: -1,
-        })
-        .limit(1);
-
-    res.status(200).json(lastday[0]);
-});
-
-module.exports = router;
+</html>

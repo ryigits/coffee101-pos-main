@@ -6,11 +6,11 @@ const Order = require("../models/Order");
 router.post("/createOrder", async (req, res) => {
     try {
         const order = req.body;
-        console.log(order);
         const newOrder = await new Order({
             items: order.items,
             total: order.total,
             payment: order.payment,
+            location: req.session.location,
         });
         const result = await newOrder.save();
         res.status(200).json(result);
@@ -23,6 +23,7 @@ router.get("/recentorders", async (req, res) => {
     // const yesterday = moment().subtract(1, "days").toDate();
     const result = await Order.find({
         createdAt: { $lt: Date.now() },
+        location: req.session.location,
     })
         .limit(3)
         .sort({ createdAt: -1 })
@@ -37,6 +38,7 @@ router.post("/deleteorder", async (req, res) => {
         // const yesterday = moment().subtract(1, "days").toDate();
         const result = await Order.find({
             createdAt: { $lt: Date.now() },
+            location: req.session.location,
         })
             .limit(3)
             .sort({ createdAt: -1 })
@@ -47,10 +49,11 @@ router.post("/deleteorder", async (req, res) => {
     }
 });
 
-router.get("/currentrevenue", async (req, res) => {
+router.get("/currentrevenueyuzyil", async (req, res) => {
     try {
         const lastday = await Endoftheday.find({
             createdAt: { $lt: new Date() },
+            location: "yuzyil",
         })
             .sort({
                 createdAt: -1,
@@ -58,6 +61,36 @@ router.get("/currentrevenue", async (req, res) => {
             .limit(1);
         const currentOrders = await Order.find({
             createdAt: { $gt: lastday[0].createdAt },
+            location: "yuzyil",
+        }).sort({
+            createdAt: -1,
+        });
+        const calculateRevenue = (currentOrders) => {
+            return currentOrders.reduce(
+                (prev, current) => prev + current.total,
+                0
+            );
+        };
+
+        res.status(200).json(calculateRevenue(currentOrders));
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.get("/currentrevenueodtu", async (req, res) => {
+    try {
+        const lastday = await Endoftheday.find({
+            createdAt: { $lt: new Date() },
+            location: "odtu",
+        })
+            .sort({
+                createdAt: -1,
+            })
+            .limit(1);
+        const currentOrders = await Order.find({
+            createdAt: { $gt: lastday[0].createdAt },
+            location: "odtu",
         }).sort({
             createdAt: -1,
         });
@@ -92,7 +125,7 @@ router.get("/mostsold", async (req, res) => {
         const mergedArray = _soldArray.reduce((obj, item) => {
             obj[item.id]
                 ? (obj[item.id].amount += item.amount)
-                : (obj[item.id] = {...item});
+                : (obj[item.id] = { ...item });
             return obj;
         }, {});
 

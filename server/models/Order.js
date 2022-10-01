@@ -13,7 +13,11 @@ const OrderSchema = new mongoose.Schema(
         },
         payment: {
             type: String,
-            enum:["cash","credit"]
+            enum: ["cash", "credit"],
+        },
+        location: {
+            type: String,
+            enum: ["odtu", "yuzyil"],
         },
     },
     { timestamps: true }

@@ -35,8 +35,14 @@ router.post("/login", async (req, res) => {
         if (user.isAdmin) {
             req.session.isAdmin = true;
             res.status(200).json({ isAdmin: true, success: true });
+        } else if (req.body.email === "metucoffee101@gmail.com") {
+            req.session.location = "yuzyil";
+            res.status(200).json({ success: true, user: "yuzyil" });
+        } else if (req.body.email === "ygtsez@gmail.com") {
+            req.session.location = "odtu";
+            res.status(200).json({ success: true, user: "odtu" });
         } else {
-            res.status(200).json({ success: true });
+            res.status(302).json({ success: false });
         }
     } catch (err) {
         res.status(500).json(err);
@@ -52,6 +58,7 @@ router.get("/user/id.json", async (req, res) => {
     } else {
         res.json({
             id: req.session.id,
+            user: req.session.location,
         });
     }
 });

@@ -1,7 +1,16 @@
 import { Dropdown } from "flowbite-react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 export default function DropDownMenu() {
+    const [consoleLabel, setConsoleLabel] = useState("yuzyil");
+    useEffect(() => {
+        fetch("/api/endoftheday/last")
+            .then((data) => data.json())
+            .then((last) => {
+                setConsoleLabel(last.location);
+            });
+    }, []);
     const onLogout = () => {
         fetch("/api/auth/logout", {
             method: "POST",
@@ -14,7 +23,7 @@ export default function DropDownMenu() {
 
     return (
         <>
-            <Dropdown label="Console" color="purple" size="lg">
+            <Dropdown label={consoleLabel} color="purple" size="lg">
                 <Dropdown.Item>
                     <Link to="/recent-orders">Recent Orders</Link>
                 </Dropdown.Item>

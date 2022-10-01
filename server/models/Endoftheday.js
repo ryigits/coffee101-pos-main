@@ -7,6 +7,10 @@ const EndofthedaySchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
+        ziraatbank: {
+            type: Number,
+            required: true,
+        },
         kasadancikis: {
             type: Number,
             required: true,
@@ -27,6 +31,10 @@ const EndofthedaySchema = new mongoose.Schema(
             type: Number,
             required: true,
         },
+        location:{
+            type:String,
+            required:true
+        }
     },
     { timestamps: true }
 );

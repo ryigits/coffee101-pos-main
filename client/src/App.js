@@ -10,8 +10,10 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
 
+
 function App() {
     const order = useSelector((state) => state.order);
+
     return (
         <div className="bg-indigo-200 min-h-screen py-4">
             <div className="grid grid-cols-6 justify-items-center  gap-2 h-1/3 sticky bg-indigo-200 top-0 z-50 w-full border-solid border-y-red-600/50 border-b-2 py-2">

@@ -1,5 +1,5 @@
 import { Label, TextInput, Button, Alert, Spinner } from "flowbite-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DayPicker } from "react-day-picker";
 import "react-day-picker/dist/style.css";
 import useStatefulFields from "../hooks/use-stateful-fields";
@@ -10,8 +10,8 @@ export default function EndOfTheDay() {
     const [values, onFormInputChange] = useStatefulFields();
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [isOdtu, setIsOdtu] = useState(false);
     let navigate = useNavigate();
-
     // eslint-disable-next-line no-unused-vars
     const [selectedDay, setSelectedDay] = useState(
         new Date(new Date().valueOf() - 1000 * 60 * 60 * 2) // 2 saatlik tolerans
@@ -33,6 +33,16 @@ export default function EndOfTheDay() {
             });
         setTimeout(() => navigate("/"), 3000);
     };
+
+    useEffect(() => {
+        fetch("/api/endoftheday/last")
+            .then((data) => data.json())
+            .then((last) => {
+                if (last.location === "odtu") {
+                    setIsOdtu(true);
+                }
+            });
+    }, []);
 
     return (
         <>
@@ -67,6 +77,24 @@ export default function EndOfTheDay() {
                     )}
                 </div>
                 <form className="flex flex-col gap-2">
+                    {isOdtu && (
+                        <div>
+                            <div className="mb-2 block">
+                                <Label
+                                    htmlFor="ziraatbank"
+                                    value="Ziraatbank Credit"
+                                />
+                            </div>
+                            <TextInput
+                                id="ziraatbank"
+                                name="ziraatbank"
+                                type="number"
+                                onChange={onFormInputChange}
+                                required={true}
+                            />
+                        </div>
+                    )}
+
                     <div>
                         <div className="mb-2 block">
                             <Label

@@ -31,7 +31,7 @@ export default function RecentOrders() {
                 <div key={index} className="m-2 justify-center w-60">
                     <Card>
                         <h1 className="text-center text-xs">
-                            Order {order._id.slice(0, 10)}
+                            Order {order._id.slice(0, 10)} - {order.location}
                         </h1>
                         <p className="text-center text-lg text-purple-400">
                             {order.total} TL

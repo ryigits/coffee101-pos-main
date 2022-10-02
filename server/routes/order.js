@@ -111,6 +111,38 @@ router.get("/mostsold", async (req, res) => {
     try {
         const lastday = await Endoftheday.find({
             createdAt: { $lt: new Date() },
+            location:"yuzyil"
+        })
+            .sort({
+                createdAt: -1,
+            })
+            .limit(1);
+        const currentOrders = await Order.where("createdAt").gt(
+            lastday[0].createdAt
+        );
+            /// odtu kapanisi ayikladim.
+        const _soldArray = currentOrders.map((order) => order.items).flat();
+
+        const mergedArray = _soldArray.reduce((obj, item) => {
+            obj[item.id]
+                ? (obj[item.id].amount += item.amount)
+                : (obj[item.id] = { ...item });
+            return obj;
+        }, {});
+
+        const mostSoldArray = Object.values(mergedArray);
+
+        res.status(200).json(mostSoldArray);
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+router.get("/coffeeconsume", async (req, res) => {
+    try {
+        const lastday = await Endoftheday.find({
+            createdAt: { $lt: new Date() },
+            location:"yuzyil"
         })
             .sort({
                 createdAt: -1,
@@ -131,10 +163,27 @@ router.get("/mostsold", async (req, res) => {
 
         const mostSoldArray = Object.values(mergedArray);
 
-        res.status(200).json(mostSoldArray);
+        var curveCoffeeGr = mostSoldArray.filter((item)=>item.title.includes("Curve"))
+        if(curveCoffeeGr.length>0){
+          curveCoffeeGr =  Number(curveCoffeeGr.map((item)=>item.amount * 10).reduce((a,b)=>a+b,0));
+        }
+        var topCoffeeGr = mostSoldArray.filter((item)=>item.title.includes("Top"));
+        if(topCoffeeGr.length>0){
+            topCoffeeGr= Number(topCoffeeGr.map((item)=>item.amount * 20).reduce((a,b)=>a+b,0));
+        }
+       var iceCoffeeGr = mostSoldArray.filter((item)=>item.title.includes("Ice"));
+       if(iceCoffeeGr.length>0){
+        iceCoffeeGr = Number(iceCoffeeGr.map((item)=>item.amount * 20).reduce((a,b)=>a+b,0));
+       }
+       var coldBrewCoffeeGr = mostSoldArray.filter((item)=>item.title.includes("Brew"));
+       if(coldBrewCoffeeGr.length > 0) {
+        coldBrewCoffeeGr = Number(coldBrewCoffeeGr.map((item)=>item.amount * 30).reduce((a,b)=>a+b,0));
+       }
+       var totalCoffeeConsumeGr = await  curveCoffeeGr + topCoffeeGr + iceCoffeeGr + coldBrewCoffeeGr;
+
+        res.status(200).json(totalCoffeeConsumeGr);
     } catch (err) {
         console.log(err);
     }
 });
-
 module.exports = router;

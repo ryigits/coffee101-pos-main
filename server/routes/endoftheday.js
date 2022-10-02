@@ -59,10 +59,10 @@ router.post("/end", async (req, res) => {
                 pass: MAIL_SECRET,
             },
         });
-        //, boranaycicekflcn@gmail.com , candasmisir@gmail.com
+        
         const mailData = {
             from: "metucoffee101@gmail.com",
-            to: `ryigit@gmail.com  `,
+            to: `ryigit@gmail.com, boranaycicekflcn@gmail.com , candasmisir@gmail.com  `,
             subject: `${new Date(currentday.time).toString().slice(0, 10)} ${
                 req.session.location
             } revenue`,

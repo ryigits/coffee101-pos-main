@@ -6,6 +6,7 @@ import { format } from "date-fns";
 export default function Admin() {
     const [currentRevenueOdtu, setCurrentRevenueOdtu] = useState(null);
     const [currentRevenueYuzyil, setCurrentRevenueYuzyil] = useState(null);
+    const [coffeeConsumeGr, setCoffeeConsumeGr] = useState(null);
     useEffect(() => {
         fetch("/api/order/currentrevenueodtu")
             .then((data) => data.json())
@@ -17,6 +18,11 @@ export default function Admin() {
             .then((revenue) => {
                 setCurrentRevenueYuzyil(revenue);
             });
+        fetch("/api/order/coffeeconsume")
+            .then((data) => data.json())
+            .then((gr) => {
+                setCoffeeConsumeGr(gr);
+            });    
     }, []);
 
     const onLogout = () => {
@@ -47,8 +53,10 @@ export default function Admin() {
                         Logout
                     </button>
                 </div>
-                <div className="col-start-2 col-end-4 row-start-1 row-end-2 flex flex-wrap h-10 text-xs">
-                    Daha sonra ozellik eklenecek...
+                <div className="col-start-2 col-end-4 row-start-1 row-end-2 flex flex-wrap h-10 text-2xl font-light mt-12">
+                   <p>Tuketilen Gunluk Kahve Miktari:</p>
+                   <p className="text-orange-500 font-normal ml-2">{coffeeConsumeGr}</p>
+                   <p className="ml-1">gr </p>
                 </div>
                 <div className="col-start-1 bg-amber-200 col-end-4 row-start-2 row-end-4 flex flex-wrap border-purple-500 border-2 text-xs">
                     <MostSold />

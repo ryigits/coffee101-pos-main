@@ -15,16 +15,16 @@ export default function Menu({ order }) {
                             setMenu(productsPackage.slice(0, 24));
                             break;
                         case "Technical Electives":
-                            setMenu(productsPackage.slice(25, 30));
+                            setMenu(productsPackage.slice(24, 30));
                             break;
                         case "Filtered Coffee":
-                            setMenu(productsPackage.slice(31, 35));
+                            setMenu(productsPackage.slice(30, 35));
                             break;
                         case "Summer School":
-                            setMenu(productsPackage.slice(36, 42));
+                            setMenu(productsPackage.slice(35, 42));
                             break;
                         case "Free Electives":
-                            setMenu(productsPackage.slice(43, 47));
+                            setMenu(productsPackage.slice(42, 47));
                             break;
                         case "Appetizers":
                             setMenu(productsPackage.slice(47, 53));
@@ -33,7 +33,7 @@ export default function Menu({ order }) {
                             setMenu(productsPackage.slice(53, 56));
                             break;
                         case "Offerings":
-                            setMenu(productsPackage.slice(56, 68));
+                            setMenu(productsPackage.slice(56, 73));
                             break;
                         default:
                             return;

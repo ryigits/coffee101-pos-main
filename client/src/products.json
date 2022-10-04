@@ -291,12 +291,12 @@
     },
     {
         "id": 59,
-        "title": "R/M Espresso Curve",
+        "title": "R/M Latte Curve",
         "price": 15
     },
     {
         "id": 60,
-        "title": "R/M Espresso Top",
+        "title": "R/M Latte Top",
         "price": 18
     },
     {
@@ -353,5 +353,15 @@
         "id": 71,
         "title": "Morning Milky Americano Curve",
         "price": 12
+    },
+    {
+        "id": 72,
+        "title": "R/M Mocha Curve",
+        "price": 22
+    },
+    {
+        "id": 73,
+        "title": "R/M Mocha Top",
+        "price": 25
     }
 ]

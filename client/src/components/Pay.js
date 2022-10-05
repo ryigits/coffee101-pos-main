@@ -3,13 +3,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { resetBasket } from "../redux/orderSlice";
 
-
 export default function Pay({ order }) {
-
     const dispatch = useDispatch();
     const [show, setShow] = useState(false);
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
     const onClick = () => {
         setShow(true);
     };
@@ -28,7 +27,12 @@ export default function Pay({ order }) {
             },
         })
             .then((data) => data.json())
-            .then(() => {
+            .then(({ success }) => {
+                if (!success) {
+                    setLoading(false);
+                    setError(true);
+                    return;
+                }
                 setLoading(false);
                 setSuccess(true);
                 setTimeout(() => {
@@ -103,6 +107,24 @@ export default function Pay({ order }) {
                                             />
                                             <span className="font-medium">
                                                 Please wait.....
+                                            </span>
+                                        </span>
+                                    </Alert>
+                                </div>
+                            )}
+                            {error && (
+                                <div className="w-full mt-4">
+                                    <Alert
+                                        withBorderAccent={true}
+                                        color="failure"
+                                    >
+                                        <span>
+                                            <Spinner
+                                                color="failure"
+                                                size="md"
+                                            />
+                                            <span className="font-medium">
+                                                Logout Olup Tekrar Deneyin
                                             </span>
                                         </span>
                                     </Alert>

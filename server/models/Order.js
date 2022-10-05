@@ -17,6 +17,7 @@ const OrderSchema = new mongoose.Schema(
         },
         location: {
             type: String,
+            required: true,
             enum: ["odtu", "yuzyil"],
         },
     },

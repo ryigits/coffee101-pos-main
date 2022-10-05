@@ -54,9 +54,9 @@ export default function Admin() {
                     </button>
                 </div>
                 <div className="col-start-2 col-end-4 row-start-1 row-end-2 flex flex-wrap h-10 text-2xl font-light mt-12">
-                   <p>Tuketilen Gunluk Kahve Miktari:</p>
-                   <p className="text-orange-500 font-normal ml-2">{coffeeConsumeGr}</p>
-                   <p className="ml-1">gr </p>
+                    <p>Tuketilen Gunluk Kahve Miktari:</p>
+                    <p className="text-orange-500 font-normal ml-2">{coffeeConsumeGr}</p>
+                    <p className="ml-1">gr </p>
                 </div>
                 <div className="col-start-1 bg-amber-200 col-end-4 row-start-2 row-end-4 flex flex-wrap border-purple-500 border-2 text-xs">
                     <MostSold />

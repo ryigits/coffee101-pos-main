@@ -152,7 +152,7 @@ router.get("/coffeeconsume", async (req, res) => {
         const currentOrders = await Order.where("createdAt").gt(
             lastday[0].createdAt
         );
-        console.log(currentOrders);
+
         const _soldArray = currentOrders.map((order) => order.items).flat();
 
         const mergedArray = _soldArray.reduce((obj, item) => {

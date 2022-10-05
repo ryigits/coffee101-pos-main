@@ -23,13 +23,23 @@ router.post("/register", async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });
-        !user && res.status(404).json("user not found");
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: "wrong username",
+            });
+        }
 
         const validPassword = await bcrypt.compare(
             req.body.password,
             user.password
         );
-        !validPassword && res.status(400).json("wrong password");
+        if (!validPassword) {
+            return res.status(400).json({
+                success: false,
+                message: "wrong password",
+            });
+        }
 
         req.session.id = user._id;
         if (user.isAdmin) {
@@ -42,10 +52,16 @@ router.post("/login", async (req, res) => {
             req.session.location = "odtu";
             res.status(200).json({ success: true, user: "odtu" });
         } else {
-            res.status(302).json({ success: false });
+            res.status(302).json({
+                success: false,
+                message: "wrong username or password",
+            });
         }
     } catch (err) {
-        res.status(500).json(err);
+        res.status(500).json({
+            success: false,
+            message: "server error",
+        });
     }
 });
 

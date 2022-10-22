@@ -15,16 +15,7 @@ app.use(compression());
 app.use(morgan("common"));
 ////// this is our socket.io boilerplate  //////
 const server = require("http").Server(app);
-let localOrHeroku;
-if (process.env.NODE_ENV === "production") {
-    localOrHeroku = "https://";
-} else {
-    localOrHeroku = "http://localhost:3000";
-}
-const io = require("socket.io")(server, {
-    allowRequest: (req, callback) =>
-        callback(null, req.headers.referer.startsWith(localOrHeroku)),
-});
+const io = require("socket.io")(server);
 //////////////////////////////////////////////
 
 let sessionSecret = process.env.SESSION_SECRET;

@@ -17,7 +17,7 @@ app.use(morgan("common"));
 const server = require("http").Server(app);
 let localOrHeroku;
 if (process.env.NODE_ENV === "production") {
-    localOrHeroku = "https://coffee101.vercel.app";
+    localOrHeroku = "https://";
 } else {
     localOrHeroku = "http://localhost:3000";
 }

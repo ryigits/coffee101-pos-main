@@ -8,7 +8,7 @@ module.exports = () => ({
         path.join(__dirname, "client", "src", "start.js"),
     ],
     output: {
-        path: path.join(__dirname, "client"),
+        path: path.join(__dirname, "client", "public"),
         filename: "bundle.js",
     },
     performance: {

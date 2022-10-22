@@ -13,10 +13,6 @@ const orderRoute = require("./routes/order");
 app.use(express.json());
 app.use(compression());
 app.use(morgan("common"));
-////// this is our socket.io boilerplate  //////
-const server = require("http").Server(app);
-const io = require("socket.io")(server);
-//////////////////////////////////////////////
 
 let sessionSecret = process.env.SESSION_SECRET;
 let MONGO_URL = process.env.MONGO_URL;
@@ -43,9 +39,7 @@ const cookieSessionMiddleware = cookieSession({
     sameSite: true,
 });
 app.use(cookieSessionMiddleware);
-io.use(function (socket, next) {
-    cookieSessionMiddleware(socket.request, socket.request.res, next);
-});
+
 dotenv.config();
 
 mongoose.connect(MONGO_URL, () => {
@@ -64,25 +58,7 @@ app.get("*", function (req, res) {
 });
 ////
 
-//SOCKET THINGS
 
-server.listen(process.env.PORT || 3001, function () {
+app.listen(process.env.PORT || 3001, function () {
     console.log("I'm listening.");
-});
-let onlineUsers = [];
-
-io.on("connection", async (socket) => {
-    if (!socket.request.session.id) {
-        return socket.disconnect(true);
-    }
-    const userId = socket.request.session.id;
-    // console.log(
-    //     `Socket with id: ${socket.id} has connected on UserId: ${userId}`
-    // );
-
-    const onlineUser = { id: userId, socket: socket.id };
-
-    onlineUsers.push(onlineUser);
-
-    console.log("Currently Online Users", onlineUsers);
 });

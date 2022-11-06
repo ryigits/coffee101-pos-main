@@ -1,6 +1,7 @@
 import Product from "./Product";
 import NavBar from "./NavBar";
 import productsPackage from "../products.json";
+import appetizers from "../appetizers.json";
 import productsFavourites from "../productsFavourites.json";
 import { useState } from "react";
 
@@ -27,7 +28,7 @@ export default function Menu({ order }) {
                             setMenu(productsPackage.slice(42, 47));
                             break;
                         case "Appetizers":
-                            setMenu(productsPackage.slice(47, 53));
+                            setMenu(appetizers);
                             break;
                         case "Add Drop":
                             setMenu(productsPackage.slice(53, 56));

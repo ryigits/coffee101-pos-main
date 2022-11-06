@@ -363,5 +363,15 @@
         "id": 73,
         "title": "R/M Mocha Top",
         "price": 25
+    },
+    {
+        "id": 74,
+        "title": "Oat Cookie",
+        "price": 25
+    },
+    {
+        "id": 75,
+        "title": "Vegan Bar",
+        "price": 20
     }
 ]

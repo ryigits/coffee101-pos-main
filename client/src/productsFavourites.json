@@ -27,12 +27,12 @@
     {
         "id": 33,
         "title": "With Milk Curve",
-        "price": 19
+        "price": 22
     },
     {
         "id": 34,
         "title": "With Milk Top",
-        "price": 22
+        "price": 25
     },
     {
         "id": 30,
@@ -42,12 +42,12 @@
     {
         "id": 31,
         "title": "Black Curve",
-        "price": 17.5
+        "price": 20
     },
     {
         "id": 32,
         "title": "Black Top",
-        "price": 20
+        "price": 23
     },
     {
         "id": 37,
@@ -77,12 +77,12 @@
     {
         "id": 57,
         "title": "Falcon Curve",
-        "price": 15
+        "price": 17
     },
     {
         "id": 58,
         "title": "Falcon Top",
-        "price": 20
+        "price": 23
     },
     {
         "id": 69,

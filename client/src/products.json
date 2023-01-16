@@ -2,222 +2,222 @@
     {
         "id": 1,
         "title": "Americano Curve",
-        "price": 26
+        "price": 30
     },
     {
         "id": 2,
         "title": "Americano Top",
-        "price": 30
+        "price": 34
     },
     {
         "id": 3,
         "title": "Latte Curve",
-        "price": 28
+        "price": 36
     },
     {
         "id": 4,
         "title": "Latte Top",
-        "price": 32
+        "price": 40
     },
     {
         "id": 5,
         "title": "Macchiato Curve",
-        "price": 28
+        "price": 36
     },
     {
         "id": 6,
         "title": "Macchiato Top",
-        "price": 32
+        "price": 40
     },
     {
         "id": 7,
         "title": "Cappucino Curve",
-        "price": 28
+        "price": 36
     },
     {
         "id": 8,
         "title": "Cappucino Top",
-        "price": 32
+        "price": 40
     },
     {
         "id": 9,
         "title": "Caramel Macchiato Curve",
-        "price": 32
+        "price": 40
     },
     {
         "id": 10,
         "title": "Caramel Macchiato Top",
-        "price": 38
+        "price": 46
     },
     {
         "id": 11,
         "title": "Chocolate Mocha Curve",
-        "price": 32
+        "price": 40
     },
     {
         "id": 12,
         "title": "Chocolate Mocha Top",
-        "price": 38
+        "price": 46
     },
     {
         "id": 13,
         "title": "White Chocolate Mocha Curve",
-        "price": 32
+        "price": 40
     },
     {
         "id": 14,
         "title": "White Chocolate Mocha Top",
-        "price": 38
+        "price": 46
     },
     {
         "id": 15,
         "title": "Chai Tea Latte Curve",
-        "price": 32
+        "price": 36
     },
     {
         "id": 16,
         "title": "Chai Tea Latte Top",
-        "price": 38
+        "price": 40
     },
     {
         "id": 17,
         "title": "Santas Latte Curve",
-        "price": 32
+        "price": 40
     },
     {
         "id": 18,
         "title": "Santas Latte Top",
-        "price": 38
+        "price": 46
     },
     {
         "id": 19,
         "title": "Coco Latte Curve",
-        "price": 32
+        "price": 40
     },
     {
         "id": 20,
         "title": "Coco Latte Top",
-        "price": 38
+        "price": 46
     },
     {
         "id": 21,
         "title": "Flat White Curve",
-        "price": 32
+        "price": 40
     },
     {
         "id": 22,
         "title": "Flat White Top",
-        "price": 38
+        "price": 46
     },
     {
         "id": 23,
         "title": "Espresso",
-        "price": 22
+        "price": 25
     },
     {
         "id": 24,
         "title": "Double Espresso",
-        "price": 26
+        "price": 30
     },
     {
         "id": 25,
         "title": "Hot Chocolate Curve",
-        "price": 28
+        "price": 36
     },
     {
         "id": 26,
         "title": "Hot Chocolate Top",
-        "price": 32
+        "price": 40
     },
     {
         "id": 27,
         "title": "Salep Curve",
-        "price": 28
+        "price": 36
     },
     {
         "id": 28,
         "title": "Salep Top",
-        "price": 32
+        "price": 40
     },
     {
         "id": 29,
         "title": "Turkish Coffee",
-        "price": 26
+        "price": 30
     },
     {
         "id": 30,
         "title": "Herbal Tea",
-        "price": 26
+        "price": 30
     },
     {
         "id": 31,
         "title": "Black Curve",
-        "price": 24
+        "price": 30
     },
     {
         "id": 32,
         "title": "Black Top",
-        "price": 26
+        "price": 34
     },
     {
         "id": 33,
         "title": "With Milk Curve",
-        "price": 26
+        "price": 32
     },
     {
         "id": 34,
         "title": "With Milk Top",
-        "price": 28
+        "price": 36
     },
     {
         "id": 35,
         "title": "250gr Coffee",
-        "price": 150
+        "price": 180
     },
     {
         "id": 36,
         "title": "Frapesso",
-        "price": 38
+        "price": 50
     },
     {
         "id": 37,
         "title": "Ice Americano",
-        "price": 32
+        "price": 42
     },
     {
         "id": 38,
         "title": "Ice Latte",
-        "price": 34
+        "price": 44
     },
     {
         "id": 39,
         "title": "Ice Coco Latte",
-        "price": 38
+        "price": 46
     },
     {
         "id": 40,
         "title": "Cold Brew",
-        "price": 38
+        "price": 50
     },
     {
         "id": 41,
         "title": "Ice Filter Coffee",
-        "price": 34
+        "price": 42
     },
     {
         "id": 42,
         "title": "Ice Flat White",
-        "price": 38
+        "price": 46
     },
     {
         "id": 43,
         "title": "Frappe",
-        "price": 32
+        "price": 40
     },
     {
         "id": 44,
         "title": "Banana Milk",
-        "price": 32
+        "price": 42
     },
     {
         "id": 45,
@@ -227,32 +227,32 @@
     {
         "id": 46,
         "title": "Lemon Tea",
-        "price": 30
+        "price": 36
     },
     {
         "id": 47,
         "title": "Soda",
-        "price": 10
+        "price": 12
     },
     {
         "id": 48,
         "title": "Slice of Cake",
-        "price": 40
+        "price": 60
     },
     {
         "id": 49,
         "title": "Croissant",
-        "price": 28
+        "price": 36
     },
     {
         "id": 50,
         "title": "Muffin",
-        "price": 24
+        "price": 36
     },
     {
         "id": 51,
         "title": "Macarons",
-        "price": 24
+        "price": 36
     },
     {
         "id": 52,
@@ -262,17 +262,17 @@
     {
         "id": 53,
         "title": "Sandwich",
-        "price": 30
+        "price": 46
     },
     {
         "id": 54,
         "title": "Extra syrup",
-        "price": 14
+        "price": 16
     },
     {
         "id": 55,
         "title": "Extra shot Espresso",
-        "price": 14
+        "price": 16
     },
     {
         "id": 56,
@@ -282,57 +282,57 @@
     {
         "id": 57,
         "title": "Falcon Curve",
-        "price": 20
+        "price": 25
     },
     {
         "id": 58,
         "title": "Falcon Top",
-        "price": 25
+        "price": 30
     },
     {
         "id": 59,
         "title": "R/M Latte Curve",
-        "price": 22
+        "price": 30
     },
     {
         "id": 60,
         "title": "R/M Latte Top",
-        "price": 25
+        "price": 32
     },
     {
         "id": 61,
         "title": "R/M Filtre Curve",
-        "price": 20
+        "price": 24
     },
     {
         "id": 62,
         "title": "R/M Filtre Top",
-        "price": 22
+        "price": 27
     },
     {
         "id": 63,
         "title": "R/M Ice Americano",
-        "price": 26
+        "price": 34
     },
     {
         "id": 64,
         "title": "R/M Ice Latte",
-        "price": 26
+        "price": 36
     },
     {
         "id": 65,
         "title": "R/M Cold Brew",
-        "price": 30
+        "price": 40
     },
     {
         "id": 66,
         "title": "R/M Frapesso",
-        "price": 30
+        "price": 40
     },
     {
         "id": 67,
         "title": "R/M Lemon Tea",
-        "price": 24
+        "price": 30
     },
     {
         "id": 68,
@@ -342,31 +342,36 @@
     {
         "id": 69,
         "title": "Bubble Tea",
-        "price": 32
+        "price": 36
     },
     {
         "id": 72,
         "title": "R/M Mocha Curve",
-        "price": 26
+        "price": 32
     },
     {
         "id": 73,
         "title": "R/M Mocha Top",
-        "price": 30
+        "price": 36
     },
     {
         "id": 74,
         "title": "Oat Cookie",
-        "price": 30
+        "price": 35
     },
     {
         "id": 75,
         "title": "Vegan Bar",
-        "price": 24
+        "price": 32
     },
     {
         "id": 76,
         "title": "Cup Cake",
-        "price": 22
+        "price": 28
+    },
+    {
+        "id": 76,
+        "title": "Magnolia",
+        "price": 45
     }
 ]

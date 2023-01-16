@@ -2,46 +2,21 @@
     {
         "id": 48,
         "title": "Slice of Cake",
-        "price": 35
-    },
-    {
-        "id": 49,
-        "title": "Croissant",
-        "price": 25
-    },
-    {
-        "id": 50,
-        "title": "Muffin",
-        "price": 20
-    },
-    {
-        "id": 51,
-        "title": "Macarons",
-        "price": 20
+        "price": 60
     },
     {
         "id": 52,
         "title": "Cookie",
-        "price": 25
-    },
-    {
-        "id": 53,
-        "title": "Sandwich",
-        "price": 25
-    },
-    {
-        "id": 74,
-        "title": "Oat Cookie",
-        "price": 25
-    },
-    {
-        "id": 75,
-        "title": "Vegan Bar",
-        "price": 20
+        "price": 30
     },
     {
         "id": 76,
         "title": "Cup Cake",
-        "price": 18
+        "price": 26
+    },
+    {
+        "id": 77,
+        "title": "Magnolia",
+        "price": 45
     }
 ]

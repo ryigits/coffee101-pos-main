@@ -1,0 +1,32 @@
+[
+    {
+        "id": 43,
+        "title": "Frappe",
+        "price": 42
+    },
+    {
+        "id": 44,
+        "title": "Banana Milk",
+        "price": 40
+    },
+    {
+        "id": 69,
+        "title": "Bubble Tea",
+        "price": 45
+    },
+    {
+        "id": 45,
+        "title": "Water",
+        "price": 5
+    },
+    {
+        "id": 46,
+        "title": "Lemon Tea",
+        "price": 40
+    },
+    {
+        "id": 47,
+        "title": "Soda",
+        "price": 12
+    }
+]

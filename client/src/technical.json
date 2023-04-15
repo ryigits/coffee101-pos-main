@@ -1,0 +1,32 @@
+[
+    {
+        "id": 25,
+        "title": "Hot Chocolate Curve",
+        "price": 36
+    },
+    {
+        "id": 26,
+        "title": "Hot Chocolate Top",
+        "price": 40
+    },
+    {
+        "id": 27,
+        "title": "Salep Curve",
+        "price": 36
+    },
+    {
+        "id": 28,
+        "title": "Salep Top",
+        "price": 40
+    },
+    {
+        "id": 29,
+        "title": "Turkish Coffee",
+        "price": 30
+    },
+    {
+        "id": 30,
+        "title": "Herbal Tea",
+        "price": 30
+    }
+]

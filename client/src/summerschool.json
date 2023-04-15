@@ -1,0 +1,37 @@
+[
+    {
+        "id": 36,
+        "title": "Frapesso",
+        "price": 50
+    },
+    {
+        "id": 37,
+        "title": "Ice Americano",
+        "price": 42
+    },
+    {
+        "id": 38,
+        "title": "Ice Latte",
+        "price": 44
+    },
+    {
+        "id": 39,
+        "title": "Ice Coco Latte",
+        "price": 46
+    },
+    {
+        "id": 40,
+        "title": "Cold Brew",
+        "price": 50
+    },
+    {
+        "id": 41,
+        "title": "Ice Filter Coffee",
+        "price": 42
+    },
+    {
+        "id": 42,
+        "title": "Ice Flat White",
+        "price": 50
+    }
+]

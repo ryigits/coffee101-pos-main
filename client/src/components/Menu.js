@@ -1,7 +1,14 @@
 import Product from "./Product";
 import NavBar from "./NavBar";
-import productsPackage from "../products.json";
+// import productsPackage from "../products.json";
 import appetizers from "../appetizers.json";
+import offerings from "../offerings.json";
+import mustcoffee from "../mustcoffee.json";
+import technical from "../technical.json";
+import filtered from "../filtered.json";
+import summerschool from "../summerschool.json";
+import free from "../free.json";
+import adddrop from "../adddrop.json";
 import productsFavourites from "../productsFavourites.json";
 import { useState } from "react";
 
@@ -13,28 +20,28 @@ export default function Menu({ order }) {
                             setMenu(productsFavourites);
                             break;
                         case "Must Coffee":
-                            setMenu(productsPackage.slice(0, 24));
+                            setMenu(mustcoffee);
                             break;
                         case "Technical Electives":
-                            setMenu(productsPackage.slice(24, 30));
+                            setMenu(technical);
                             break;
                         case "Filtered Coffee":
-                            setMenu(productsPackage.slice(30, 35));
+                            setMenu(filtered);
                             break;
                         case "Summer School":
-                            setMenu(productsPackage.slice(35, 42));
+                            setMenu(summerschool);
                             break;
                         case "Free Electives":
-                            setMenu(productsPackage.slice(42, 47));
+                            setMenu(free);
                             break;
                         case "Appetizers":
                             setMenu(appetizers);
                             break;
                         case "Add Drop":
-                            setMenu(productsPackage.slice(53, 56));
+                            setMenu(adddrop);
                             break;
                         case "Offerings":
-                            setMenu(productsPackage.slice(56, 73));
+                            setMenu(offerings);
                             break;
                         default:
                             return;

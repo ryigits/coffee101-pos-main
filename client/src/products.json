@@ -212,12 +212,12 @@
     {
         "id": 43,
         "title": "Frappe",
-        "price": 40
+        "price": 42
     },
     {
         "id": 44,
         "title": "Banana Milk",
-        "price": 42
+        "price": 40
     },
     {
         "id": 45,
@@ -227,7 +227,7 @@
     {
         "id": 46,
         "title": "Lemon Tea",
-        "price": 36
+        "price": 40
     },
     {
         "id": 47,
@@ -260,11 +260,6 @@
         "price": 30
     },
     {
-        "id": 53,
-        "title": "Sandwich",
-        "price": 46
-    },
-    {
         "id": 54,
         "title": "Extra syrup",
         "price": 16
@@ -292,47 +287,47 @@
     {
         "id": 59,
         "title": "R/M Latte Curve",
-        "price": 30
+        "price": 32
     },
     {
         "id": 60,
         "title": "R/M Latte Top",
-        "price": 32
+        "price": 36
     },
     {
         "id": 61,
         "title": "R/M Filtre Curve",
-        "price": 24
+        "price": 27
     },
     {
         "id": 62,
         "title": "R/M Filtre Top",
-        "price": 27
+        "price": 30
     },
     {
         "id": 63,
         "title": "R/M Ice Americano",
-        "price": 34
+        "price": 37
     },
     {
         "id": 64,
         "title": "R/M Ice Latte",
-        "price": 36
+        "price": 40
     },
     {
         "id": 65,
         "title": "R/M Cold Brew",
-        "price": 40
+        "price": 45
     },
     {
         "id": 66,
         "title": "R/M Frapesso",
-        "price": 40
+        "price": 45
     },
     {
         "id": 67,
         "title": "R/M Lemon Tea",
-        "price": 30
+        "price": 36
     },
     {
         "id": 68,
@@ -342,32 +337,17 @@
     {
         "id": 69,
         "title": "Bubble Tea",
-        "price": 36
+        "price": 45
     },
     {
         "id": 72,
         "title": "R/M Mocha Curve",
-        "price": 32
+        "price": 36
     },
     {
         "id": 73,
         "title": "R/M Mocha Top",
-        "price": 36
-    },
-    {
-        "id": 74,
-        "title": "Oat Cookie",
-        "price": 35
-    },
-    {
-        "id": 75,
-        "title": "Vegan Bar",
-        "price": 32
-    },
-    {
-        "id": 76,
-        "title": "Cup Cake",
-        "price": 26
+        "price": 41
     },
     {
         "id": 77,
@@ -378,5 +358,80 @@
         "id": 78,
         "title": "Kek",
         "price": 15
+    },
+    {
+        "id": 79,
+        "title": "Donut",
+        "price": 34
+    },
+    {
+        "id": 80,
+        "title": "Kruvasan",
+        "price": 40
+    },
+    {
+        "id": 81,
+        "title": "R/M Hot Choc/Sahlep Curve",
+        "price": 32
+    },
+    {
+        "id": 82,
+        "title": "R/M Hot Choc/Sahlep Top",
+        "price": 36
+    },
+    {
+        "id": 83,
+        "title": "R/M Herbal Tea/Turkish Coffee ",
+        "price": 27
+    },
+    {
+        "id": 84,
+        "title": "R/M Bananamilk/Frappe ",
+        "price": 37
+    },
+    {
+        "id": 85,
+        "title": "Vegan Latte Curve ",
+        "price": 44
+    },
+    {
+        "id": 86,
+        "title": "Vegan Latte Top ",
+        "price": 48
+    },
+    {
+        "id": 87,
+        "title": "R/M Vegan Latte Curve ",
+        "price": 40
+    },
+    {
+        "id": 88,
+        "title": "R/M Vegan Latte Top ",
+        "price": 43
+    },
+    {
+        "id": 89,
+        "title": "R/M Donut",
+        "price": 30
+    },
+    {
+        "id": 90,
+        "title": "R/M Kruvasan ",
+        "price": 36
+    },
+    {
+        "id": 91,
+        "title": "R/M Slice of Cake ",
+        "price": 54
+    },
+    {
+        "id": 92,
+        "title": "R/M Cookie ",
+        "price": 27
+    },
+    {
+        "id": 93,
+        "title": "R/M Bubble Tea ",
+        "price": 40
     }
 ]

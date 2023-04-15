@@ -1,0 +1,118 @@
+[
+    {
+        "id": 68,
+        "title": "Beles Kart",
+        "price": 0
+    },
+    {
+        "id": 57,
+        "title": "Falcon Curve",
+        "price": 25
+    },
+    {
+        "id": 58,
+        "title": "Falcon Top",
+        "price": 30
+    },
+    {
+        "id": 59,
+        "title": "R/M Latte Curve",
+        "price": 32
+    },
+    {
+        "id": 60,
+        "title": "R/M Latte Top",
+        "price": 36
+    },
+    {
+        "id": 61,
+        "title": "R/M Filtre Curve",
+        "price": 27
+    },
+    {
+        "id": 62,
+        "title": "R/M Filtre Top",
+        "price": 30
+    },
+    {
+        "id": 63,
+        "title": "R/M Ice Americano",
+        "price": 37
+    },
+    {
+        "id": 64,
+        "title": "R/M Ice Latte",
+        "price": 40
+    },
+    {
+        "id": 65,
+        "title": "R/M Cold Brew",
+        "price": 45
+    },
+    {
+        "id": 66,
+        "title": "R/M Frapesso",
+        "price": 45
+    },
+    {
+        "id": 67,
+        "title": "R/M Lemon Tea",
+        "price": 36
+    },
+    {
+        "id": 81,
+        "title": "R/M Hot Choc/Sahlep Curve",
+        "price": 32
+    },
+    {
+        "id": 82,
+        "title": "R/M Hot Choc/Sahlep Top",
+        "price": 36
+    },
+    {
+        "id": 83,
+        "title": "R/M Herbal Tea/Turkish Coffee ",
+        "price": 27
+    },
+    {
+        "id": 84,
+        "title": "R/M Bananamilk/Frappe ",
+        "price": 37
+    },
+
+    {
+        "id": 93,
+        "title": "R/M Bubble Tea ",
+        "price": 40
+    },
+    {
+        "id": 87,
+        "title": "R/M Vegan Latte Curve ",
+        "price": 40
+    },
+    {
+        "id": 88,
+        "title": "R/M Vegan Latte Top ",
+        "price": 43
+    },
+    {
+        "id": 89,
+        "title": "R/M Donut",
+        "price": 30
+    },
+    {
+        "id": 90,
+        "title": "R/M Kruvasan ",
+        "price": 36
+    },
+    {
+        "id": 91,
+        "title": "R/M Slice of Cake ",
+        "price": 54
+    },
+    {
+        "id": 92,
+        "title": "R/M Cookie ",
+        "price": 27
+    }
+]

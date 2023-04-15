@@ -1,0 +1,27 @@
+[
+    {
+        "id": 31,
+        "title": "Black Curve",
+        "price": 30
+    },
+    {
+        "id": 32,
+        "title": "Black Top",
+        "price": 34
+    },
+    {
+        "id": 33,
+        "title": "With Milk Curve",
+        "price": 32
+    },
+    {
+        "id": 34,
+        "title": "With Milk Top",
+        "price": 36
+    },
+    {
+        "id": 35,
+        "title": "250gr Coffee",
+        "price": 180
+    }
+]

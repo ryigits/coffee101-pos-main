@@ -10,11 +10,6 @@
         "price": 30
     },
     {
-        "id": 76,
-        "title": "Cup Cake",
-        "price": 26
-    },
-    {
         "id": 77,
         "title": "Magnolia",
         "price": 45
@@ -23,5 +18,15 @@
         "id": 78,
         "title": "Kek",
         "price": 15
+    },
+    {
+        "id": 79,
+        "title": "Donut",
+        "price": 34
+    },
+    {
+        "id": 80,
+        "title": "Kruvasan",
+        "price": 40
     }
 ]

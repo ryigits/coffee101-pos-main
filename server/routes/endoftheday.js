@@ -6,7 +6,7 @@ const {
     sendInfoMailDailyRevenue,
     saveAllRevenues,
     coffeeConsume,
-    saveCoffeeConsume
+    saveCoffeeConsume,
 } = require("../helpers");
 
 router.post("/end", async (req, res) => {
@@ -49,7 +49,7 @@ router.post("/end", async (req, res) => {
             calculatedRevenue,
             todayCoffeeConsume
         );
-        saveCoffeeConsume(todayCoffeeConsume);
+        todayCoffeeConsume && saveCoffeeConsume(todayCoffeeConsume);
         saveAllRevenues(currentday, endoftheday, location, calculatedRevenue);
 
         res.status(200).json(endoftheday);

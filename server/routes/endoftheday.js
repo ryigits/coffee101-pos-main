@@ -5,16 +5,20 @@ const {
     calculateCiro,
     sendInfoMailDailyRevenue,
     saveAllRevenues,
+    coffeeConsume,
+    saveCoffeeConsume
 } = require("../helpers");
 
 router.post("/end", async (req, res) => {
     try {
         const currentday = req.body;
         const { location } = req.session;
+        let todayCoffeeConsume = null;
         const calculatedRevenue = await currentRevenue(location);
 
         if (location === "yuzyil") {
             currentday.ziraatbank = 0;
+            todayCoffeeConsume = await coffeeConsume();
         }
         const lastday = await Endoftheday.find({
             createdAt: { $lt: currentday.time },
@@ -42,8 +46,10 @@ router.post("/end", async (req, res) => {
             currentday,
             endoftheday,
             location,
-            calculatedRevenue
+            calculatedRevenue,
+            todayCoffeeConsume
         );
+        saveCoffeeConsume(todayCoffeeConsume);
         saveAllRevenues(currentday, endoftheday, location, calculatedRevenue);
 
         res.status(200).json(endoftheday);

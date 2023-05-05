@@ -7,17 +7,17 @@
     {
         "id": 37,
         "title": "Ice Americano",
-        "price": 42
+        "price": 45
     },
     {
         "id": 38,
         "title": "Ice Latte",
-        "price": 44
+        "price": 50
     },
     {
         "id": 39,
         "title": "Ice Coco Latte",
-        "price": 46
+        "price": 55
     },
     {
         "id": 40,
@@ -27,7 +27,7 @@
     {
         "id": 41,
         "title": "Ice Filter Coffee",
-        "price": 42
+        "price": 45
     },
     {
         "id": 42,

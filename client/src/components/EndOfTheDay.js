@@ -11,6 +11,7 @@ export default function EndOfTheDay() {
     const [success, setSuccess] = useState(false);
     const [loading, setLoading] = useState(false);
     const [isOdtu, setIsOdtu] = useState(false);
+    const [alreadyEnd, setAlreadyEnd] = useState(false);
     let navigate = useNavigate();
     // eslint-disable-next-line no-unused-vars
     const [selectedDay, setSelectedDay] = useState(
@@ -34,12 +35,28 @@ export default function EndOfTheDay() {
         setTimeout(() => navigate("/"), 3000);
     };
 
+    const compareDates = (d1, d2) => {
+        let date1 = new Date(d1).getDay();
+        let date2 = new Date(d2).getDay();
+        if (date1 === date2) {
+            return true;
+        }
+    };
+
     useEffect(() => {
         fetch("/api/endoftheday/last")
             .then((data) => data.json())
             .then((last) => {
                 if (last.location === "odtu") {
                     setIsOdtu(true);
+                }
+                if (
+                    compareDates(
+                        last.createdAt,
+                        new Date(new Date().valueOf() - 1000 * 60 * 60 * 2)
+                    )
+                ) {
+                    setAlreadyEnd(true);
                 }
             });
     }, []);
@@ -50,6 +67,18 @@ export default function EndOfTheDay() {
                 <div>
                     <DayPicker mode="single" selected={selectedDay} />
                     <LastEndOfTheDay />
+                    {alreadyEnd && (
+                        <div className="w-full mt-4">
+                            <Alert withBorderAccent={true} color="warning">
+                                <span>
+                                    <span className="font-normal">
+                                        Gunsonu daha once alinmistir. Hata var
+                                        ise whatsapptan bildirin.
+                                    </span>
+                                </span>
+                            </Alert>
+                        </div>
+                    )}
                     {loading && (
                         <div className="w-full mt-4">
                             <Alert withBorderAccent={true} color="warning">
@@ -70,7 +99,7 @@ export default function EndOfTheDay() {
                                         Successfull
                                     </span>
                                     <br></br>
-                                    Order has been recorded !
+                                    EndofTheDay has been successfully recorded !
                                 </span>
                             </Alert>
                         </div>
@@ -163,7 +192,7 @@ export default function EndOfTheDay() {
                         />
                     </div>
                     <Button
-                        disabled={loading}
+                        disabled={loading || alreadyEnd}
                         onClick={(e) => onFormSubmit(e)}
                         type="submit"
                     >

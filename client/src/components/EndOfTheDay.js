@@ -36,9 +36,14 @@ export default function EndOfTheDay() {
     };
 
     const compareDates = (d1, d2) => {
-        let date1 = new Date(d1).getDay();
-        let date2 = new Date(d2).getDay();
-        if (date1 === date2) {
+        
+        let date = new Date(d1); //will convert to present timestamp offset
+        date = new Date(
+            date.getTime() + date.getTimezoneOffset() * 60 * 1000
+        ).getDate();
+        
+        let date2 = new Date(d2).getDate();
+        if (date === date2) {
             return true;
         }
     };

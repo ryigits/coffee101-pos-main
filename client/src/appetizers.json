@@ -28,5 +28,15 @@
         "id": 80,
         "title": "Kruvasan",
         "price": 40
+    },
+    {
+        "id": 94,
+        "title": "Tost",
+        "price": 35
+    },
+    {
+        "id": 96,
+        "title": "Tost + Curve FK",
+        "price": 50
     }
 ]

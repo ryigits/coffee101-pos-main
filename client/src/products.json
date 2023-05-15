@@ -433,5 +433,20 @@
         "id": 93,
         "title": "R/M Bubble Tea ",
         "price": 40
+    },
+    {
+        "id": 94,
+        "title": "Tost",
+        "price": 35
+    },
+    {
+        "id": 95,
+        "title": "Cakmak",
+        "price": 20
+    },
+    {
+        "id": 96,
+        "title": "Tost + Curve FK",
+        "price": 50
     }
 ]

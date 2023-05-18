@@ -12,12 +12,18 @@
     {
         "id": 77,
         "title": "Magnolia",
-        "price": 45
+        "price": 40
+    },
+
+    {
+        "id": 97,
+        "title": "Brownie",
+        "price": 50
     },
     {
         "id": 78,
         "title": "Kek",
-        "price": 15
+        "price": 20
     },
     {
         "id": 79,

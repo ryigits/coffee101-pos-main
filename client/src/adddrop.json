@@ -2,16 +2,16 @@
     {
         "id": 54,
         "title": "Extra syrup",
-        "price": 16
+        "price": 20
     },
     {
         "id": 55,
         "title": "Extra shot Espresso",
-        "price": 16
+        "price": 20
     },
     {
         "id": 56,
         "title": "Vegan Milk",
-        "price": 8
+        "price": 10
     }
 ]

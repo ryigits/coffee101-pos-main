@@ -7,23 +7,23 @@
     {
         "id": 52,
         "title": "Cookie",
-        "price": 30
+        "price": 36
     },
     {
         "id": 77,
         "title": "Magnolia",
-        "price": 40
+        "price": 45
     },
 
     {
         "id": 97,
         "title": "Brownie",
-        "price": 50
+        "price": 28
     },
     {
         "id": 78,
         "title": "Kek",
-        "price": 20
+        "price": 17
     },
     {
         "id": 79,
@@ -38,11 +38,11 @@
     {
         "id": 94,
         "title": "Tost",
-        "price": 35
+        "price": 40
     },
     {
         "id": 96,
         "title": "Tost + Curve FK",
-        "price": 50
+        "price": 60
     }
 ]

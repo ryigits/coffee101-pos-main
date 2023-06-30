@@ -2,67 +2,62 @@
     {
         "id": 1,
         "title": "Americano Curve",
-        "price": 30
+        "price": 38
     },
     {
         "id": 2,
         "title": "Americano Top",
-        "price": 34
+        "price": 43
     },
     {
         "id": 3,
         "title": "Latte Curve",
-        "price": 36
+        "price": 40
     },
     {
         "id": 4,
         "title": "Latte Top",
-        "price": 40
-    },
-    {
-        "id": 7,
-        "title": "Cappucino Curve",
-        "price": 36
+        "price": 47
     },
     {
         "id": 33,
         "title": "With Milk Curve",
-        "price": 32
+        "price": 38
     },
     {
         "id": 34,
         "title": "With Milk Top",
-        "price": 34
+        "price": 44
     },
     {
         "id": 30,
         "title": "Herbal Tea",
-        "price": 30
+        "price": 40
     },
     {
         "id": 31,
         "title": "Black Curve",
-        "price": 30
+        "price": 36
     },
     {
         "id": 32,
         "title": "Black Top",
-        "price": 34
+        "price": 42
     },
     {
         "id": 37,
         "title": "Ice Americano",
-        "price": 45
+        "price": 48
     },
     {
         "id": 38,
         "title": "Ice Latte",
-        "price": 50
+        "price": 52
     },
     {
         "id": 40,
         "title": "Cold Brew",
-        "price": 50
+        "price": 55
     },
     {
         "id": 45,
@@ -77,12 +72,12 @@
     {
         "id": 57,
         "title": "Falcon Curve",
-        "price": 25
+        "price": 30
     },
     {
         "id": 58,
         "title": "Falcon Top",
-        "price": 30
+        "price": 40
     },
     {
         "id": 69,

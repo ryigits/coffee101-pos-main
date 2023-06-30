@@ -2,132 +2,132 @@
     {
         "id": 1,
         "title": "Americano Curve",
-        "price": 30
+        "price": 38
     },
     {
         "id": 2,
         "title": "Americano Top",
-        "price": 34
+        "price": 43
     },
     {
         "id": 3,
         "title": "Latte Curve",
-        "price": 36
+        "price": 40
     },
     {
         "id": 4,
         "title": "Latte Top",
-        "price": 40
+        "price": 47
     },
     {
         "id": 5,
         "title": "Macchiato Curve",
-        "price": 36
+        "price": 40
     },
     {
         "id": 6,
         "title": "Macchiato Top",
-        "price": 40
+        "price": 47
     },
     {
         "id": 7,
         "title": "Cappucino Curve",
-        "price": 36
+        "price": 40
     },
     {
         "id": 8,
         "title": "Cappucino Top",
-        "price": 40
+        "price": 47
     },
     {
         "id": 9,
         "title": "Caramel Macchiato Curve",
-        "price": 40
+        "price": 47
     },
     {
         "id": 10,
         "title": "Caramel Macchiato Top",
-        "price": 46
+        "price": 52
     },
     {
         "id": 11,
         "title": "Chocolate Mocha Curve",
-        "price": 40
+        "price": 47
     },
     {
         "id": 12,
         "title": "Chocolate Mocha Top",
-        "price": 46
+        "price": 52
     },
     {
         "id": 13,
         "title": "White Chocolate Mocha Curve",
-        "price": 40
+        "price": 47
     },
     {
         "id": 14,
         "title": "White Chocolate Mocha Top",
-        "price": 46
+        "price": 52
     },
     {
         "id": 15,
         "title": "Chai Tea Latte Curve",
-        "price": 40
+        "price": 47
     },
     {
         "id": 16,
         "title": "Chai Tea Latte Top",
-        "price": 46
+        "price": 52
     },
     {
         "id": 17,
         "title": "Santas Latte Curve",
-        "price": 40
+        "price": 47
     },
     {
         "id": 18,
         "title": "Santas Latte Top",
-        "price": 46
+        "price": 52
     },
     {
         "id": 19,
         "title": "Coco Latte Curve",
-        "price": 40
+        "price": 47
     },
     {
         "id": 20,
         "title": "Coco Latte Top",
-        "price": 46
+        "price": 52
     },
     {
         "id": 21,
         "title": "Flat White Curve",
-        "price": 40
+        "price": 47
     },
     {
         "id": 22,
         "title": "Flat White Top",
-        "price": 46
+        "price": 52
     },
 
     {
         "id": 85,
         "title": "Vegan Latte Curve ",
-        "price": 44
+        "price": 45
     },
     {
         "id": 86,
         "title": "Vegan Latte Top ",
-        "price": 48
+        "price": 50
     },
     {
         "id": 23,
         "title": "Espresso",
-        "price": 25
+        "price": 32
     },
     {
         "id": 24,
         "title": "Double Espresso",
-        "price": 30
+        "price": 36
     }
 ]

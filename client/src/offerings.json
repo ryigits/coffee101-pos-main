@@ -7,12 +7,12 @@
     {
         "id": 57,
         "title": "Falcon Curve",
-        "price": 30
+        "price": 35
     },
     {
         "id": 58,
         "title": "Falcon Top",
-        "price": 40
+        "price": 45
     },
     {
         "id": 94,
@@ -22,62 +22,62 @@
     {
         "id": 96,
         "title": "Tost + Curve FK",
-        "price": 60
+        "price": 65
     },
     {
         "id": 59,
         "title": "R/M Latte Curve",
-        "price": 36
+        "price": 42
     },
     {
         "id": 60,
         "title": "R/M Latte Top",
-        "price": 42
+        "price": 52
     },
     {
         "id": 61,
         "title": "R/M Filtre Curve",
-        "price": 32
+        "price": 36
     },
     {
         "id": 62,
         "title": "R/M Filtre Top",
-        "price": 36
+        "price": 42
     },
     {
         "id": 63,
         "title": "R/M Ice Americano",
-        "price": 42
+        "price": 48
     },
     {
         "id": 64,
         "title": "R/M Ice Latte",
-        "price": 47
+        "price": 57
     },
     {
         "id": 65,
         "title": "R/M Cold Brew",
-        "price": 50
+        "price": 58
     },
     {
         "id": 66,
         "title": "R/M Frapesso",
-        "price": 50
+        "price": 62
     },
     {
         "id": 67,
         "title": "R/M Lemon Tea",
-        "price": 36
+        "price": 42
     },
     {
         "id": 81,
         "title": "R/M Hot Choc/Sahlep Curve",
-        "price": 38
+        "price": 42
     },
     {
         "id": 82,
         "title": "R/M Hot Choc/Sahlep Top",
-        "price": 44
+        "price": 52
     },
     {
         "id": 83,
@@ -87,47 +87,47 @@
     {
         "id": 84,
         "title": "R/M Bananamilk/Frappe ",
-        "price": 37
+        "price": 50
     },
 
     {
         "id": 93,
         "title": "R/M Bubble Tea ",
-        "price": 40
+        "price": 50
     },
     {
         "id": 87,
         "title": "R/M Vegan Latte Curve ",
-        "price": 41
+        "price": 48
     },
     {
         "id": 88,
         "title": "R/M Vegan Latte Top ",
-        "price": 44
+        "price": 56
     },
     {
         "id": 89,
         "title": "R/M Donut",
-        "price": 32
+        "price": 36
     },
     {
         "id": 90,
         "title": "R/M Kruvasan ",
-        "price": 36
+        "price": 40
     },
     {
         "id": 91,
         "title": "R/M Slice of Cake ",
-        "price": 54
+        "price": 60
     },
     {
         "id": 92,
         "title": "R/M Cookie ",
-        "price": 31
+        "price": 36
     },
     {
         "id": 95,
         "title": "Cakmak",
-        "price": 20
+        "price": 30
     }
 ]

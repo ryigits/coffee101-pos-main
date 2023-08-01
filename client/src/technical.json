@@ -2,27 +2,27 @@
     {
         "id": 25,
         "title": "Hot Chocolate Curve",
-        "price": 44
+        "price": 50
     },
     {
         "id": 26,
         "title": "Hot Chocolate Top",
-        "price": 48
+        "price": 60
     },
     {
         "id": 27,
         "title": "Salep Curve",
-        "price": 44
+        "price": 50
     },
     {
         "id": 28,
         "title": "Salep Top",
-        "price": 48
+        "price": 60
     },
     {
         "id": 29,
         "title": "Turkish Coffee",
-        "price": 36
+        "price": 40
     },
     {
         "id": 30,

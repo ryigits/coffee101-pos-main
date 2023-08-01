@@ -2,36 +2,31 @@
     {
         "id": 36,
         "title": "Frapesso",
-        "price": 57
+        "price": 70
     },
     {
         "id": 37,
         "title": "Ice Americano",
-        "price": 48
+        "price": 55
     },
     {
         "id": 38,
         "title": "Ice Latte",
-        "price": 52
+        "price": 65
     },
     {
         "id": 39,
         "title": "Ice Coco Latte",
-        "price": 57
+        "price": 65
     },
     {
         "id": 40,
         "title": "Cold Brew",
-        "price": 55
-    },
-    {
-        "id": 41,
-        "title": "Ice Filter Coffee",
-        "price": 50
+        "price": 65
     },
     {
         "id": 42,
         "title": "Ice Flat White",
-        "price": 57
+        "price": 70
     }
 ]

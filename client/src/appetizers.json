@@ -2,38 +2,38 @@
     {
         "id": 48,
         "title": "Slice of Cake",
-        "price": 60
+        "price": 70
     },
     {
         "id": 52,
         "title": "Cookie",
-        "price": 36
+        "price": 40
     },
     {
         "id": 77,
         "title": "Magnolia",
-        "price": 45
+        "price": 50
     },
 
     {
         "id": 97,
         "title": "Brownie",
-        "price": 56
+        "price": 65
     },
     {
         "id": 78,
         "title": "Kek",
-        "price": 17
+        "price": 20
     },
     {
         "id": 79,
         "title": "Donut",
-        "price": 34
+        "price": 40
     },
     {
         "id": 80,
         "title": "Kruvasan",
-        "price": 40
+        "price": 45
     },
     {
         "id": 94,

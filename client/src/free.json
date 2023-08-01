@@ -2,31 +2,31 @@
     {
         "id": 43,
         "title": "Frappe",
-        "price": 48
+        "price": 60
     },
     {
         "id": 44,
         "title": "Banana Milk",
-        "price": 44
+        "price": 60
     },
     {
         "id": 69,
         "title": "Bubble Tea",
-        "price": 50
+        "price": 60
     },
     {
         "id": 45,
         "title": "Water",
-        "price": 5
+        "price": 10
     },
     {
         "id": 46,
         "title": "Lemon Tea",
-        "price": 40
+        "price": 50
     },
     {
         "id": 47,
         "title": "Soda",
-        "price": 12
+        "price": 20
     }
 ]

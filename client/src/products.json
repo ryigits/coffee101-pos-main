@@ -453,5 +453,20 @@
         "id": 97,
         "title": "Brownie",
         "price": 50
+    },
+    {
+        "id": 98,
+        "title": "Affogato",
+        "price": 50
+    },
+    {
+        "id": 99,
+        "title": "Ice Cream Cup",
+        "price": 30
+    },
+    {
+        "id": 100,
+        "title": "Ice Cream Stick",
+        "price": 40
     }
 ]

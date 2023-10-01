@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import Admin from "./Admin";
+import NeronsDashboard from "./Nerons/NeronsDashboard";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/store";
@@ -15,7 +16,9 @@ fetch("/api/auth/user/id.json")
             root.render(<Login />);
         } else if (data.isAdmin) {
             root.render(<Admin />);
-        } else {
+        } else if (data.user==='nerons') {
+            root.render(<NeronsDashboard />);
+        }else {
             root.render(
                 <Provider store={store}>
                     <BrowserRouter>

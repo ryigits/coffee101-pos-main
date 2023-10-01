@@ -1,15 +1,14 @@
 import Product from "./Product";
 import NavBar from "./NavBar";
-// import productsPackage from "../products.json";
-import appetizers from "../appetizers.json";
-import offerings from "../offerings.json";
-import mustcoffee from "../mustcoffee.json";
-import technical from "../technical.json";
-import filtered from "../filtered.json";
-import summerschool from "../summerschool.json";
-import free from "../free.json";
-import adddrop from "../adddrop.json";
-import productsFavourites from "../productsFavourites.json";
+import appetizers from "../jsons/appetizers.json";
+import offerings from "../jsons/offerings.json";
+import mustcoffee from "../jsons/mustcoffee.json";
+import technical from "../jsons/technical.json";
+import filtered from "../jsons/filtered.json";
+import summerschool from "../jsons/summerschool.json";
+import free from "../jsons/free.json";
+import adddrop from "../jsons/adddrop.json";
+import productsFavourites from "../jsons/productsFavourites.json";
 import { useState } from "react";
 
 export default function Menu({ order }) {

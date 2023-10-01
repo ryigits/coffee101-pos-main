@@ -9,6 +9,7 @@ const endofthedayRoute = require("./routes/endoftheday");
 const productsRoute = require("./routes/products");
 const authRoute = require("./routes/auth");
 const orderRoute = require("./routes/order");
+const neronsDashboard = require("./routes/neronsdashboard");
 
 app.use(express.json());
 app.use(compression());
@@ -50,6 +51,7 @@ app.use("/api/products", productsRoute);
 app.use("/api/auth", authRoute);
 app.use("/api/order", orderRoute);
 app.use("/api/endoftheday", endofthedayRoute);
+app.use("/api/neronsdashboard", neronsDashboard);
 
 //BOILERPLATE
 app.use(express.static(path.join(__dirname, "..", "client", "public")));

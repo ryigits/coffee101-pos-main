@@ -41,7 +41,7 @@ router.post("/deleteorder", async (req, res) => {
             createdAt: { $lt: Date.now() },
             location: req.session.location,
         })
-            .limit(3)
+            .limit(5)
             .sort({ createdAt: -1 })
             .exec();
         res.status(200).json(result);

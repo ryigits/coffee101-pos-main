@@ -1,7 +1,7 @@
 import BasketItem from "./BasketItem";
 import { useSelector, useDispatch } from "react-redux";
 import { resetBasket } from "../redux/orderSlice";
-import productsPackage from "../products.json";
+import productsPackage from "../jsons/products.json";
 import { Button } from "flowbite-react";
 
 export default function Basket() {

@@ -51,7 +51,10 @@ router.post("/login", async (req, res) => {
         } else if (req.body.email === "ygtsez@gmail.com") {
             req.session.location = "odtu";
             res.status(200).json({ success: true, user: "odtu" });
-        } else {
+        } else if (req.body.email === "ezgidogan2396@gmail.com") {
+            req.session.location = "nerons";
+            res.status(200).json({ success: true, user: "odtu" });
+        }else {
             res.status(302).json({
                 success: false,
                 message: "wrong username or password",

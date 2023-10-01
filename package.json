@@ -29,7 +29,7 @@
         "@types/react-router-dom": "^5.3.3",
         "autoprefixer": "^10.4.8",
         "aws-sdk": "^2.1189.0",
-        "axios": "^0.21.4",
+        "axios": "^1.5.1",
         "babel-loader": "^8.2.5",
         "bcrypt": "^5.0.1",
         "bcryptjs": "^2.4.3",
@@ -54,6 +54,7 @@
         "moment": "^2.29.4",
         "mongoose": "^6.5.2",
         "morgan": "^1.10.0",
+        "node-fetch": "^3.3.2",
         "nodemailer": "^6.7.8",
         "nodemon": "^2.0.19",
         "postcss": "^8.4.16",
@@ -91,6 +92,5 @@
     },
     "keywords": [],
     "author": "",
-    "license": "ISC",
-    "devDependencies": {}
+    "license": "ISC"
 }

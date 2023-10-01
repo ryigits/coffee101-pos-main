@@ -6,6 +6,11 @@ import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/store";
 import Login from "./Login";
+import EywinDashboard from "./Eywin/EywinDashboard";
+
+
+
+
 const main = document.querySelector("main");
 const root = createRoot(main);
 
@@ -18,6 +23,8 @@ fetch("/api/auth/user/id.json")
             root.render(<Admin />);
         } else if (data.user==='nerons') {
             root.render(<NeronsDashboard />);
+        } else if (data.user==='eywin') {
+            root.render(<EywinDashboard />);
         }else {
             root.render(
                 <Provider store={store}>

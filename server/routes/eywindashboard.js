@@ -2,15 +2,16 @@ const router = require("express").Router();
 const axios = require('axios').default;
 const moment=require('moment');
 
-let POTENSUS = '/22751551271,22776608796';
-let REKLAMUP = '/90851098,22776608796';
-let ADSYIELD = '/21728129623,22776608796';
-let A4G = '/60257202,22776608796';
-let GRAVITE ='/57201580,22776608796';
+let POTENSUS = '/22751551271,22598630004';
+let REKLAMUP = '/90851098,22598630004';
+let A4G = '/60257202,22598630004';
+let MAKROO='/324749355,22598630004';
+let PREMIUMADS='/75894840,22598630004';
+let GRAVITE = '/57201580,22598630004';
 
 let API_KEY_MAX_NERONS = process.env.API_KEY_MAX_NERONS;
 if (!API_KEY_MAX_NERONS) {
-    API_KEY_MAX_NERONS = require("../secrets.json").API_KEY_MAX_NERONS;
+    API_KEY_MAX_NERONS = require("../secrets.json").API_KEY_MAX_EYWIN;
 }
 
 router.get("/adunits/:adunittype/:network", async (req, res) => {
@@ -22,28 +23,11 @@ router.get("/adunits/:adunittype/:network", async (req, res) => {
         let adUnitKey = '';
         switch(adUnitType){
                         case 'and_int':
-                            adUnitKey = '152d3aa13cf4afbf';
+                            adUnitKey = '7a921e4f304e0119';
                             break;
-                        case 'and_rw':
-                            adUnitKey = '9bdf686de94042a3';
+                        case 'and_mrect':
+                            adUnitKey = 'e983fd2f6b6c9683';
                             break;
-                        case 'ios_int':
-                            adUnitKey = '0c25880c3e93f50a';
-                            break;
-                        case 'ios_rw':
-                            adUnitKey = '5e8c403407771dbd';
-                            break;
-                        case 'low_int':
-                            adUnitKey = '71c0e8b7e4034ff8';
-                            break;
-                        case 'low_rw':
-                            adUnitKey = '6ab7b0409a944e05';
-                            break;
-                        case 'low_tier_int' :
-                            adUnitKey='71c0e8b7e4034ff8';
-                            break;
-                        case 'low_tier_rw' :
-                            adUnitKey='6ab7b0409a944e05';
         }
         switch(network){
                         case 'reklamup':
@@ -52,11 +36,14 @@ router.get("/adunits/:adunittype/:network", async (req, res) => {
                         case 'potensus':
                             matchTag=POTENSUS;
                             break;
-                        case 'adsyield':
-                            matchTag=ADSYIELD;
+                        case 'makroo':
+                            matchTag=MAKROO;
                             break;
                         case 'a4g':
                             matchTag=A4G;
+                            break;
+                        case 'premiumads':
+                            matchTag=PREMIUMADS;
                             break;
                         case 'gravite':
                             matchTag=GRAVITE;
@@ -73,37 +60,21 @@ router.get("/adunits/:adunittype/:network", async (req, res) => {
         console.log(err);
     }
 });
+
 router.get("/adunits/:adunittype/:network/daybefore", async (req, res) => {
     try {
-        const yesterday = moment().add(-2, 'days').format('YYYY-MM-DD');
+        const dayBefore = moment().add(-2, 'days').format('YYYY-MM-DD');
         let adUnitType = req.params.adunittype;
         let network = req.params.network;
         let matchTag='';
         let adUnitKey = '';
         switch(adUnitType){
                         case 'and_int':
-                            adUnitKey = '152d3aa13cf4afbf';
+                            adUnitKey = '7a921e4f304e0119';
                             break;
-                        case 'and_rw':
-                            adUnitKey = '9bdf686de94042a3';
+                        case 'and_mrect':
+                            adUnitKey = 'e983fd2f6b6c9683';
                             break;
-                        case 'ios_int':
-                            adUnitKey = '0c25880c3e93f50a';
-                            break;
-                        case 'ios_rw':
-                            adUnitKey = '5e8c403407771dbd';
-                            break;
-                        case 'low_int':
-                            adUnitKey = '71c0e8b7e4034ff8';
-                            break;
-                        case 'low_rw':
-                            adUnitKey = '6ab7b0409a944e05';
-                            break;
-                        case 'low_tier_int' :
-                            adUnitKey='71c0e8b7e4034ff8';
-                            break;
-                        case 'low_tier_rw' :
-                            adUnitKey='6ab7b0409a944e05';
         }
         switch(network){
                         case 'reklamup':
@@ -112,17 +83,20 @@ router.get("/adunits/:adunittype/:network/daybefore", async (req, res) => {
                         case 'potensus':
                             matchTag=POTENSUS;
                             break;
-                        case 'adsyield':
-                            matchTag=ADSYIELD;
+                        case 'makroo':
+                            matchTag=MAKROO;
                             break;
                         case 'a4g':
                             matchTag=A4G;
+                            break;
+                        case 'premiumads':
+                            matchTag=PREMIUMADS;
                             break;
                         case 'gravite':
                             matchTag=GRAVITE;
         }
         let url=
-`https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_NERONS}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${yesterday}&end=${yesterday}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
+`https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_NERONS}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${dayBefore}&end=${dayBefore}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
         let result = await axios.get(url);
         
         let result2 = result.data.results.filter((e)=>e.network_placement.includes(matchTag)&&e.max_ad_unit_id===adUnitKey);

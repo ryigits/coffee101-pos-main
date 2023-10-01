@@ -53,7 +53,10 @@ router.post("/login", async (req, res) => {
             res.status(200).json({ success: true, user: "odtu" });
         } else if (req.body.email === "ezgidogan2396@gmail.com") {
             req.session.location = "nerons";
-            res.status(200).json({ success: true, user: "odtu" });
+            res.status(200).json({ success: true, user: "nerons" });
+        }else if (req.body.email === "ezgi@eywin.com") {
+            req.session.location = "eywin";
+            res.status(200).json({ success: true, user: "eywin" });
         }else {
             res.status(302).json({
                 success: false,

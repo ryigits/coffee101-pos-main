@@ -6,8 +6,8 @@ import AdNetwork from "./AdNetwork";
 
 export default function NeronsDashboard() {
     // eslint-disable-next-line no-unused-vars
-    const [adNetworks,setAdNetworks]=useState(['potensus','a4g','reklamup','gravite','adsyield']);
-    const [adUnitType,setadUnitType]= useState('and_int');
+    const [adNetworks,setAdNetworks]=useState(['potensus','a4g','reklamup','gravite','makroo']);
+    const [adUnitType,setadUnitType]= useState('and_mrect');
 
     const onLogout = () => {
         fetch("/api/auth/logout", {
@@ -28,7 +28,7 @@ export default function NeronsDashboard() {
             <div className="min-h-screen border-red-400 border-4 items-baseline flex  bg-indigo-200">
                 <div className="flex flex-col justify-center max-h-min gap-10 m-10">
                     <h1 className="text-3xl underline underline-offset-4 text-orange-500">
-                        Nerons GAM Dashboard
+                        Eywin GAM Dashboard
                     </h1>
                     <p className="text-xl">Today : {format(new Date(), "PP")}</p>
                     <div className="flex flex-row gap-5">
@@ -43,12 +43,8 @@ export default function NeronsDashboard() {
                             label={adUnitType}
                             color="warning"
                         >
-                            <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('and_int')}>Android Interstitial</Dropdown.Item>
-                            <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('and_rw')}>Android Rewarded</Dropdown.Item>
-                            <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('ios_int')}>IOS Interstitial</Dropdown.Item>
-                            <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('ios_rw')}>IOS Rewarded</Dropdown.Item>
-                            <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('low_tier_int')}>Low Tier Interstitial</Dropdown.Item>
-                            <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('low_tier_rw')}>Low Tier Rewarded</Dropdown.Item>
+                            <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('and_int')}>Interstitial</Dropdown.Item>
+                            <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('and_mrect')}>Mrect</Dropdown.Item>
                         </Dropdown>
                     </div>
 

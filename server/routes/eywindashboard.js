@@ -9,9 +9,9 @@ let MAKROO='/324749355,22598630004';
 let PREMIUMADS='/75894840,22598630004';
 let GRAVITE = '/57201580,22598630004';
 
-let API_KEY_MAX_NERONS = process.env.API_KEY_MAX_NERONS;
-if (!API_KEY_MAX_NERONS) {
-    API_KEY_MAX_NERONS = require("../secrets.json").API_KEY_MAX_EYWIN;
+let API_KEY_MAX_EYWIN = process.env.API_KEY_MAX_EYWIN;
+if (!API_KEY_MAX_EYWIN) {
+    API_KEY_MAX_EYWIN = require("../secrets.json").API_KEY_MAX_EYWIN;
 }
 
 router.get("/adunits/:adunittype/:network", async (req, res) => {
@@ -49,7 +49,7 @@ router.get("/adunits/:adunittype/:network", async (req, res) => {
                             matchTag=GRAVITE;
         }
         let url=
-`https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_NERONS}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${yesterday}&end=${yesterday}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
+`https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_EYWIN}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${yesterday}&end=${yesterday}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
         let result = await axios.get(url);
         
         let result2 = result.data.results.filter((e)=>e.network_placement.includes(matchTag)&&e.max_ad_unit_id===adUnitKey);
@@ -96,7 +96,7 @@ router.get("/adunits/:adunittype/:network/daybefore", async (req, res) => {
                             matchTag=GRAVITE;
         }
         let url=
-`https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_NERONS}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${dayBefore}&end=${dayBefore}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
+`https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_EYWIN}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${dayBefore}&end=${dayBefore}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
         let result = await axios.get(url);
         
         let result2 = result.data.results.filter((e)=>e.network_placement.includes(matchTag)&&e.max_ad_unit_id===adUnitKey);

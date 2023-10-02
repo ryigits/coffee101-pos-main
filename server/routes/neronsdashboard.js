@@ -75,7 +75,7 @@ router.get("/adunits/:adunittype/:network", async (req, res) => {
 });
 router.get("/adunits/:adunittype/:network/daybefore", async (req, res) => {
     try {
-        const yesterday = moment().add(-2, 'days').format('YYYY-MM-DD');
+        const dayBefore = moment().add(-2, 'days').format('YYYY-MM-DD');
         let adUnitType = req.params.adunittype;
         let network = req.params.network;
         let matchTag='';
@@ -122,7 +122,7 @@ router.get("/adunits/:adunittype/:network/daybefore", async (req, res) => {
                             matchTag=GRAVITE;
         }
         let url=
-`https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_NERONS}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${yesterday}&end=${yesterday}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
+`https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_NERONS}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${dayBefore}&end=${dayBefore}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
         let result = await axios.get(url);
         
         let result2 = result.data.results.filter((e)=>e.network_placement.includes(matchTag)&&e.max_ad_unit_id===adUnitKey);

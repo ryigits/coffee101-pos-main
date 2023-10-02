@@ -9,16 +9,20 @@ export default function AdNetwork({adUnitType,adNetwork}) {
     const reset = () => {
         setSeed(Math.random());
     };
+    // eslint-disable-next-line no-unused-vars
+    const [loading,setLoading]=useState('Loading...');
 
     useEffect(() => {
         fetch(`/api/eywindashboard/adunits/${adUnitType}/${adNetwork}`)
             .then((data) => data.json())
             .then((a) => {
+                if(a.length==0) setLoading('No Tag');
                 setyesterday(a);
             });
         fetch(`/api/eywindashboard/adunits/${adUnitType}/${adNetwork}/daybefore`)
             .then((data) => data.json())
             .then((a) => {
+                if(a.length==0) setLoading('No Tag');
                 setdayBefore(a);
             });
     }, [adUnitType]);
@@ -34,6 +38,7 @@ export default function AdNetwork({adUnitType,adNetwork}) {
     return<>
         <Card>
             <h1 className="text-xl text-indigo-500">{adNetwork}</h1>
+            <h3 className="text-md text-lime-500">x {yesterday.length}</h3>
             <Dropdown
                 floatingArrow={true}
                 arrowIcon={true}
@@ -47,10 +52,20 @@ export default function AdNetwork({adUnitType,adNetwork}) {
                 ))}
                 
             </Dropdown>
-            <p className=" text-orange-500 text-sm">Yesterday Revenue:</p> <p className="font-semibold">{Math.floor(calculateTotalRevenue(yesterday))} $</p>
-            <p className=" text-orange-500 text-sm">Day Before Revenue:</p> <p className="font-semibold">{Math.floor(calculateTotalRevenue(dayBefore))} $</p>
+            <p className=" text-orange-500 text-sm">Yesterday Revenue:</p>
+            {
+                yesterday.length==0?<>
+                    <p className="text-xs">{loading}</p>
+                </>:  <p className="font-semibold">{Math.floor(calculateTotalRevenue(yesterday))} $</p>
+            }
+            <p className=" text-orange-500 text-sm">Day Before Revenue:</p>
+            {
+                dayBefore.length==0?<>
+                    <p className="text-xs">{loading}</p>
+                </>:  <p className="font-semibold">{Math.floor(calculateTotalRevenue(dayBefore))} $</p>
+            }
             <div className="ml-8">
-                <Button size='xs' onClick={reset}>Reload</Button>
+                <Button disabled={yesterday.length===0} size='xs' onClick={reset}>Reload</Button>
             </div>
         </Card>
     </>;

@@ -65,7 +65,7 @@ export default function AdNetwork({adUnitType,adNetwork}) {
                 </>:  <p className="font-semibold">{Math.floor(calculateTotalRevenue(dayBefore))} $</p>
             }
             <div className="ml-8">
-                <Button size='xs' onClick={reset}>Reload</Button>
+                <Button disabled={yesterday.length===0} size='xs' onClick={reset}>Reload</Button>
             </div>
         </Card>
     </>;

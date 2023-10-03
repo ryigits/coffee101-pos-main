@@ -7,6 +7,7 @@ let REKLAMUP = '/90851098,22776608796';
 let ADSYIELD = '/21728129623,22776608796';
 let A4G = '/60257202,22776608796';
 let GRAVITE ='/57201580,22776608796';
+let PREMIUMADS='/75894840,22776608796';
 
 let API_KEY_MAX_NERONS = process.env.API_KEY_MAX_NERONS;
 if (!API_KEY_MAX_NERONS) {
@@ -60,6 +61,9 @@ router.get("/adunits/:adunittype/:network", async (req, res) => {
                             break;
                         case 'gravite':
                             matchTag=GRAVITE;
+                            break;
+                        case 'premiumads':
+                            matchTag=PREMIUMADS;
         }
         let url=
 `https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_NERONS}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${yesterday}&end=${yesterday}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
@@ -120,13 +124,16 @@ router.get("/adunits/:adunittype/:network/daybefore", async (req, res) => {
                             break;
                         case 'gravite':
                             matchTag=GRAVITE;
+                            break;
+                        case 'premiumads':
+                            matchTag=PREMIUMADS;
         }
         let url=
 `https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_NERONS}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${dayBefore}&end=${dayBefore}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
         let result = await axios.get(url);
-        
+
         let result2 = result.data.results.filter((e)=>e.network_placement.includes(matchTag)&&e.max_ad_unit_id===adUnitKey);
-        
+
         res.status(200).json(result2);
 
     } catch (err) {

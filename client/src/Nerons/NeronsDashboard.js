@@ -6,7 +6,7 @@ import AdNetwork from "./AdNetwork";
 
 export default function NeronsDashboard() {
     // eslint-disable-next-line no-unused-vars
-    const [adNetworks,setAdNetworks]=useState(['potensus','a4g','reklamup','gravite','adsyield']);
+    const [adNetworks,setAdNetworks]=useState(['potensus','a4g','reklamup','gravite','adsyield','premiumads']);
     const [adUnitType,setadUnitType]= useState('and_int');
 
     const onLogout = () => {

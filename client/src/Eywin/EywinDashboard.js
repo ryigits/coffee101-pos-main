@@ -4,9 +4,9 @@ import { Dropdown } from 'flowbite-react';
 import { format } from "date-fns";
 import AdNetwork from "./AdNetwork";
 
-export default function NeronsDashboard() {
+export default function EywinDashboard() {
     // eslint-disable-next-line no-unused-vars
-    const [adNetworks,setAdNetworks]=useState(['potensus','a4g','reklamup','gravite','makroo']);
+    const [adNetworks,setAdNetworks]=useState(['potensus','a4g','reklamup','gravite','makroo','premiumads']);
     const [adUnitType,setadUnitType]= useState('and_mrect');
 
     const onLogout = () => {

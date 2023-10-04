@@ -4,7 +4,7 @@ import { format } from 'date-fns';
 import Console from './Console';
 import { DayPicker } from 'react-day-picker';
 
-export default function EywinDashboard() {
+export default function Dashboard({musteri}) {
     const [isMounted, setIsMounted] = useState(true);
     const [isLoading, setIsLoading] = useState(false);
     const [grupedData, setGrupedData] = useState([]);
@@ -23,7 +23,7 @@ export default function EywinDashboard() {
         if (!isMounted) return;
         let day = format(new Date(selectedDay), 'yyyy-MM-dd');
         setIsLoading(true);
-        fetch(`/api/eywindashboard/${adUnitType}/${day}`, {
+        fetch(`/api/dashboard/${adUnitType}/${day}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,8 +69,19 @@ export default function EywinDashboard() {
                             label={adUnitType}
                             color="warning"
                         >
-                            <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('and_int')}>Interstitial</Dropdown.Item>
-                            <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('and_mrect')}>M Rect</Dropdown.Item>
+                            {musteri==='nerons'?<>
+                                <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('and_int')}>Android Interstitial</Dropdown.Item>
+                                <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('and_rw')}>Android Rewarded</Dropdown.Item>
+                                <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('ios_int')}>IOS Interstitial</Dropdown.Item>
+                                <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('ios_rw')}>IOS Rewarded</Dropdown.Item>
+                                <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('low_tier_int')}>Low Tier Interstitial</Dropdown.Item>
+                                <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('low_tier_rw')}>Low Tier Rewarded</Dropdown.Item>
+                            </>
+                                :<>
+                                    <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('and_int')}>Interstitial</Dropdown.Item>
+                                    <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('and_mrect')}>Mrect</Dropdown.Item>
+                                </>}
+                            
                         </Dropdown>
 
                         {isLoading ? (
@@ -81,8 +92,8 @@ export default function EywinDashboard() {
                             </div>
                         )}
                     </div>
-                    <div className="md:w-1/2 p-4">
-                        <h1 className="text-3xl flex underline underline-offset-4 text-orange-500">Eywin GAM Dashboard</h1>
+                    <div className="md:w-1/2 p-4 ml-2">
+                        <h1 className="text-3xl ml-8 underline underline-offset-6 text-orange-500">{musteri.toUpperCase()} Dashboard</h1>
                         <button className="hover:text-rose-600 text-lg float-right" onClick={onLogout}>Logout</button>
                         <DayPicker
                             mode="single"

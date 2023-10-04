@@ -1,62 +1,167 @@
 const router = require("express").Router();
+const axios = require('axios').default;
+const moment = require('moment');
 
-const axios = require('axios');
+// API anahtarları
+const apiKeyMaxNerons = process.env.API_KEY_MAX_NERONS || require("../secrets.json").API_KEY_MAX_NERONS;
+const apiKeyMaxEywin = process.env.API_KEY_MAX_EYWIN || require("../secrets.json").API_KEY_MAX_EYWIN;
 
+// Reklam birimleri
+const adUnits = [
+    {
+        adUnitType: 'and_int',
+        adUnitKey: '152d3aa13cf4afbf',
+        customer: 'nerons',
+        adNetworks: [
+            { networkId: '/22751551271,22776608796', name: 'POTENSUS' },
+            { networkId: '/90851098,22776608796', name: 'REKLAMUP' },
+            { networkId: '/21728129623,22776608796', name: 'ADSYIELD' },
+            { networkId: '/60257202,22776608796', name: 'A4G' },
+            { networkId: '/57201580,22776608796', name: 'GRAVITE' },
+            { networkId: '/75894840,22776608796', name: 'PREMIUMADS' }
+        ]
+    },
+    {
+        adUnitType: 'and_rw',
+        adUnitKey: '9bdf686de94042a3',
+        customer: 'nerons',
+        adNetworks: [
+            { networkId: '/22751551271,22776608796', name: 'POTENSUS' },
+            { networkId: '/90851098,22776608796', name: 'REKLAMUP' },
+            { networkId: '/21728129623,22776608796', name: 'ADSYIELD' },
+            { networkId: '/60257202,22776608796', name: 'A4G' },
+            { networkId: '/57201580,22776608796', name: 'GRAVITE' },
+            { networkId: '/75894840,22776608796', name: 'PREMIUMADS' }
+        ]
+    },
+    {
+        adUnitType: 'ios_int',
+        adUnitKey: '0c25880c3e93f50a',
+        customer: 'nerons',
+        adNetworks: [
+            { networkId: '/22751551271,22776608796', name: 'POTENSUS' },
+            { networkId: '/90851098,22776608796', name: 'REKLAMUP' },
+            { networkId: '/21728129623,22776608796', name: 'ADSYIELD' },
+            { networkId: '/60257202,22776608796', name: 'A4G' },
+            { networkId: '/57201580,22776608796', name: 'GRAVITE' },
+            { networkId: '/75894840,22776608796', name: 'PREMIUMADS' }
+        ]
+    },
+    {
+        adUnitType: 'ios_rw',
+        adUnitKey: '5e8c403407771dbd',
+        customer: 'nerons',
+        adNetworks: [
+            { networkId: '/22751551271,22776608796', name: 'POTENSUS' },
+            { networkId: '/90851098,22776608796', name: 'REKLAMUP' },
+            { networkId: '/21728129623,22776608796', name: 'ADSYIELD' },
+            { networkId: '/60257202,22776608796', name: 'A4G' },
+            { networkId: '/57201580,22776608796', name: 'GRAVITE' },
+            { networkId: '/75894840,22776608796', name: 'PREMIUMADS' }
+        ]
+    },
+    {
+        adUnitType: 'low_tier_int',
+        adUnitKey: '71c0e8b7e4034ff8',
+        customer: 'nerons',
+        adNetworks: [
+            { networkId: '/22751551271,22776608796', name: 'POTENSUS' },
+            { networkId: '/90851098,22776608796', name: 'REKLAMUP' },
+            { networkId: '/21728129623,22776608796', name: 'ADSYIELD' },
+            { networkId: '/60257202,22776608796', name: 'A4G' },
+            { networkId: '/57201580,22776608796', name: 'GRAVITE' },
+            { networkId: '/75894840,22776608796', name: 'PREMIUMADS' }
+        ]
+    },
+    {
+        adUnitType: 'low_tier_rw',
+        adUnitKey: '6ab7b0409a944e05',
+        customer: 'nerons',
+        adNetworks: [
+            { networkId: '/22751551271,22776608796', name: 'POTENSUS' },
+            { networkId: '/90851098,22776608796', name: 'REKLAMUP' },
+            { networkId: '/21728129623,22776608796', name: 'ADSYIELD' },
+            { networkId: '/60257202,22776608796', name: 'A4G' },
+            { networkId: '/57201580,22776608796', name: 'GRAVITE' },
+            { networkId: '/75894840,22776608796', name: 'PREMIUMADS' }
+        ]
+    },
+    {
+        adUnitType: 'and_mrect',
+        adUnitKey: 'e983fd2f6b6c9683',
+        customer: 'eywin',
+        adNetworks: [
+            { networkId: '/22751551271,22598630004', name: 'POTENSUS' },
+            { networkId: '/90851098,22598630004', name: 'REKLAMUP' },
+            { networkId: '/21728129623,22598630004', name: 'ADSYIELD' },
+            { networkId: '/60257202,22598630004', name: 'A4G' },
+            { networkId: '/57201580,22598630004', name: 'GRAVITE' },
+            { networkId: '/75894840,22598630004', name: 'PREMIUMADS' },
+            { networkId: '/324749355,22598630004', name: 'MAKROO' }
+        ]
+    },{
+        adUnitType: 'and_int',
+        adUnitKey: '7a921e4f304e0119',
+        customer: 'eywin',
+        adNetworks: [
+            { networkId: '/22751551271,22598630004', name: 'POTENSUS' },
+            { networkId: '/90851098,22598630004', name: 'REKLAMUP' },
+            { networkId: '/21728129623,22598630004', name: 'ADSYIELD' },
+            { networkId: '/60257202,22598630004', name: 'A4G' },
+            { networkId: '/57201580,22598630004', name: 'GRAVITE' },
+            { networkId: '/75894840,22598630004', name: 'PREMIUMADS' },
+            { networkId: '/324749355,22598630004', name: 'MAKROO' }
+        ]
+    }
+    // Diğer ad birimlerini ekleyin
+];
 
-let API_KEY_MAX_EYWIN = process.env.API_KEY_MAX_EYWIN;
-if (!API_KEY_MAX_EYWIN) {
-    API_KEY_MAX_EYWIN = require("../secrets.json").API_KEY_MAX_EYWIN;
-}
-let API_KEY_MAX_NERONS = process.env.API_KEY_MAX_NERONS;
-if (!API_KEY_MAX_NERONS) {
-    API_KEY_MAX_NERONS = require("../secrets.json").API_KEY_MAX_NERONS;
-}
-
-router.get("/:selectedday/:adunittype", async (req, res) => {
+router.get("/:adunittype/:day", async (req, res) => {
     try {
-        const adUnitType = req.params.adunittype;
-        // const musteri = req.session.dashboard;
-        const musteri = 'nerons';
-        const selectedday = req.params.selectedday;
-        const API_KEY = musteri === 'nerons' ? API_KEY_MAX_NERONS : API_KEY_MAX_EYWIN;
-        const MAX_AD_UNIT_ID_MAP = {
-            'nerons': {
-                'and_int': '152d3aa13cf4afbf',
-                'and_rw': '9bdf686de94042a3',
-                'ios_int': '0c25880c3e93f50a',
-                // Diğer ad unit tipleri için gerekli olan ID'leri ekleyin
-            },
-            'eywin': {
-                'and_int': '7a921e4f304e0119',
-                'and_mrect': 'e983fd2f6b6c9683',
-                // Diğer ad unit tipleri için gerekli olan ID'leri ekleyin
+        const day = req.params.day;
+        let daybefore = moment(day).add(-1, 'days').format('YYYY-MM-DD');
+        let adUnitType = req.params.adunittype;
+        // Müşteri belirleme
+        let customer;
+        if (req.session && req.session.id) {
+            if (req.session.id === 'nerons') {
+                customer = 'nerons';
+            } else if (req.session.id === 'eywin') {
+                customer = 'eywin';
             }
-        };
+        }
         
-        // Diğer kodlar...
+        // İlgili reklam birimini bulma
+        const adUnit = adUnits.find(unit => unit.adUnitType === adUnitType && unit.customer === customer);
+
+        if (!adUnit) {
+            return res.status(404).json({ error: 'Ad unit not found' });
+        }
+
+        const { adUnitKey, adNetworks } = adUnit;
+
+        // API anahtarını seçme
+        const apiKey = customer === 'nerons' ? apiKeyMaxNerons : apiKeyMaxEywin;
+
+        let url = `https://r.applovin.com/maxReport?api_key=${apiKey}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${daybefore}&end=${day}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
+
+        let result = await axios.get(url);
         
-        const adUnitKey = MAX_AD_UNIT_ID_MAP[musteri][adUnitType];
-
-
-        let queryParams = new URLSearchParams({
-            api_key: API_KEY,
-            columns: 'day,estimated_revenue,max_ad_unit_id,network,network_placement',
-            format: 'json',
-            start: selectedday.toUpperCase(),
-            end: selectedday.toUpperCase(),
-            filter_network: 'GOOGLE_AD_MANAGER_NETWORK',
+        let resultData = result.data.results.filter((e) => e.max_ad_unit_id === adUnitKey);
+        
+        const sortedData = resultData.map(item => {
+            const adNetwork = adNetworks.find(network => item.network_placement.includes(network.networkId));
+            if (adNetwork) {
+                item.adNetwork = adNetwork.name;
+            }
+            return item;
         });
 
-        let url = `https://r.applovin.com/maxReport?${queryParams.toString()}`;
+        res.status(200).json(sortedData);
 
-        const result = await axios.get(url);
-
-        const result2 = result.data.results.filter((e) => e.max_ad_unit_id === adUnitKey);  // ad unit tipine gore olan butun aktif tagleri cekiyor
-
-        res.status(200).json(result2);
     } catch (err) {
         console.error(err);
-        res.status(500).json({ error: "Internal Server Error" });
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 

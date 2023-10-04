@@ -14,14 +14,14 @@ if (!API_KEY_MAX_EYWIN) {
     API_KEY_MAX_EYWIN = require("../secrets.json").API_KEY_MAX_EYWIN;
 }
 
-router.get("/adunits/:adunittype/:network", async (req, res) => {
+router.get("/:adunittype/:day", async (req, res) => {
     try {
-        const yesterday = moment().add(-1, 'days').format('YYYY-MM-DD');
+        const day = req.params.day;
+        let daybefore = moment(day).add(-1,'days').format('YYYY-MM-DD');
         let adUnitType = req.params.adunittype;
-        let network = req.params.network;
-        let matchTag='';
         let adUnitKey = '';
-        switch(adUnitType){
+
+        switch (adUnitType) {
                         case 'and_int':
                             adUnitKey = '7a921e4f304e0119';
                             break;
@@ -29,82 +29,35 @@ router.get("/adunits/:adunittype/:network", async (req, res) => {
                             adUnitKey = 'e983fd2f6b6c9683';
                             break;
         }
-        switch(network){
-                        case 'reklamup':
-                            matchTag=REKLAMUP;
-                            break;
-                        case 'potensus':
-                            matchTag=POTENSUS;
-                            break;
-                        case 'makroo':
-                            matchTag=MAKROO;
-                            break;
-                        case 'a4g':
-                            matchTag=A4G;
-                            break;
-                        case 'premiumads':
-                            matchTag=PREMIUMADS;
-                            break;
-                        case 'gravite':
-                            matchTag=GRAVITE;
-        }
-        let url=
-`https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_EYWIN}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${yesterday}&end=${yesterday}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
+
+        let url = `https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_EYWIN}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${daybefore}&end=${day}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
+
         let result = await axios.get(url);
-        
-        let result2 = result.data.results.filter((e)=>e.network_placement.includes(matchTag)&&e.max_ad_unit_id===adUnitKey);
-        
-        res.status(200).json(result2);
+
+        let resultData = result.data.results.filter((e) => e.max_ad_unit_id === adUnitKey);
+
+        const sortedData = resultData.map(item => {
+            if (item.network_placement.includes(POTENSUS)) {
+                item.adNetwork = 'POTENSUS';
+            } else if (item.network_placement.includes(REKLAMUP)) {
+                item.adNetwork = 'REKLAMUP';
+            } else if (item.network_placement.includes(MAKROO)) {
+                item.adNetwork = 'MAKROO';
+            } else if (item.network_placement.includes(A4G)) {
+                item.adNetwork = 'A4G';
+            } else if (item.network_placement.includes(GRAVITE)) {
+                item.adNetwork = 'GRAVITE';
+            } else if (item.network_placement.includes(PREMIUMADS)) {
+                item.adNetwork = 'PREMIUMADS';
+            }
+            return item;
+        });
+
+        res.status(200).json(sortedData);
 
     } catch (err) {
-        console.log(err);
-    }
-});
-
-router.get("/adunits/:adunittype/:network/daybefore", async (req, res) => {
-    try {
-        const dayBefore = moment().add(-2, 'days').format('YYYY-MM-DD');
-        let adUnitType = req.params.adunittype;
-        let network = req.params.network;
-        let matchTag='';
-        let adUnitKey = '';
-        switch(adUnitType){
-                        case 'and_int':
-                            adUnitKey = '7a921e4f304e0119';
-                            break;
-                        case 'and_mrect':
-                            adUnitKey = 'e983fd2f6b6c9683';
-                            break;
-        }
-        switch(network){
-                        case 'reklamup':
-                            matchTag=REKLAMUP;
-                            break;
-                        case 'potensus':
-                            matchTag=POTENSUS;
-                            break;
-                        case 'makroo':
-                            matchTag=MAKROO;
-                            break;
-                        case 'a4g':
-                            matchTag=A4G;
-                            break;
-                        case 'premiumads':
-                            matchTag=PREMIUMADS;
-                            break;
-                        case 'gravite':
-                            matchTag=GRAVITE;
-        }
-        let url=
-`https://r.applovin.com/maxReport?api_key=${API_KEY_MAX_EYWIN}&columns=day,estimated_revenue,max_ad_unit_id,network,network_placement&format=json&start=${dayBefore}&end=${dayBefore}&filter_network=GOOGLE_AD_MANAGER_NETWORK`;
-        let result = await axios.get(url);
-        
-        let result2 = result.data.results.filter((e)=>e.network_placement.includes(matchTag)&&e.max_ad_unit_id===adUnitKey);
-        
-        res.status(200).json(result2);
-
-    } catch (err) {
-        console.log(err);
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
     }
 });
 

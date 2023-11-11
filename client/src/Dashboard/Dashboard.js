@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Dropdown } from 'flowbite-react';
 import { format } from 'date-fns';
 import Console from './Console';
-import { DayPicker } from 'react-day-picker';
+import { DayPicker} from 'react-day-picker';
 
 export default function Dashboard({musteri}) {
     const [isMounted, setIsMounted] = useState(true);
@@ -62,7 +62,7 @@ export default function Dashboard({musteri}) {
         <>
             <div className="min-h-screen bg-indigo-200 p-10">
                 <div className="flex flex-col md:flex-row">
-                    <div className="md:w-1/2 p-4">
+                    <div className="md:w-2/3 p-4">
                         <Dropdown
                             floatingArrow={true}
                             arrowIcon={true}
@@ -75,7 +75,6 @@ export default function Dashboard({musteri}) {
                                 <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('ios_int')}>IOS Interstitial</Dropdown.Item>
                                 <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('ios_rw')}>IOS Rewarded</Dropdown.Item>
                                 <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('low_tier_int')}>Low Tier Interstitial</Dropdown.Item>
-                                <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('low_tier_rw')}>Low Tier Rewarded</Dropdown.Item>
                             </>
                                 :<>
                                     <Dropdown.Item className="font-thin text-xs"  onClick={()=>click('and_int')}>Interstitial</Dropdown.Item>
@@ -85,14 +84,14 @@ export default function Dashboard({musteri}) {
                         </Dropdown>
 
                         {isLoading ? (
-                            <p className="text-xl font-medium text-amber-500">Loading...</p>
+                            <p className="text-2xl font-medium text-rose-300 float-right">Loading...</p>
                         ) : (
-                            <div className="mt-4">
+                            <div className="">
                                 <Console data={grupedData} />
                             </div>
                         )}
                     </div>
-                    <div className="md:w-1/2 p-4 ml-2">
+                    <div className="md:w-1/3 p-4 ml-2">
                         <h1 className="text-3xl ml-8 underline underline-offset-6 text-orange-500">{musteri.toUpperCase()} Dashboard</h1>
                         <button className="hover:text-rose-600 text-lg float-right" onClick={onLogout}>Logout</button>
                         <DayPicker
@@ -101,8 +100,8 @@ export default function Dashboard({musteri}) {
                             selected={selectedDay}
                             onSelect={setSelectedDay}
                             footer={footer}
+                            fromDate={new Date(new Date().valueOf() - 1000 * 60 * 60 * 24 * 44)} // 44 gun onceden basliyor.
                         />
-                        
                     </div>
                 </div>
 

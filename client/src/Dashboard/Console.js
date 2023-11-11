@@ -45,10 +45,10 @@ const Console = ({ data }) => {
     return (
         <div className="min-w-min flex flex-col items-center">
             <div className="mt-4">
-                <h3 className="text-lg font-semibold">Toplam Gelirler:</h3>
+                <h3 className="text-lg underline underline-offset-1 font-semibold">Toplam Gelirler:</h3>
                 <ul>
                     {Object.entries(totalRevenueByDay).map(([day, totalRevenue], index) => (
-                        <li key={index} className="text-sm">{day} - ${totalRevenue.toFixed(2)}</li>
+                        <li key={index} className="text-lg">{day} - ${totalRevenue.toFixed(2)}</li>
                     ))}
                 </ul>
             </div>
@@ -65,11 +65,11 @@ const Console = ({ data }) => {
 
                     return (
                         <li key={index} className={`mb-4 border p-4 ${getNetworkColor(adNetwork)}`}>
-                            <strong className="text-md font-semibold text-lime-800">
+                            <strong className="text-md underline underline-offset-2 font-semibold text-lime-800">
                                 {adNetwork} - {day}:</strong> ${totalRevenue.toFixed(2)} ({percentage.toFixed(2)}%) - {numTags}x
                             <ul className="list-disc list-inside mt-2">
                                 {tags.map((tag, index) => (
-                                    <li key={index} className="text-xs">{tag.network_placement} - ${tag.revenue}</li>
+                                    <li key={index} className="text-lg">{tag.network_placement} - ${tag.revenue}</li>
                                 ))}
                             </ul>
                         </li>

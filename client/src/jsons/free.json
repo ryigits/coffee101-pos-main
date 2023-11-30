@@ -7,26 +7,26 @@
     {
         "id": 44,
         "title": "Banana Milk",
-        "price": 60
+        "price": 65
     },
     {
         "id": 69,
         "title": "Bubble Tea",
-        "price": 60
+        "price": 65
     },
     {
         "id": 45,
         "title": "Water",
-        "price": 10
+        "price": 12
     },
     {
         "id": 46,
         "title": "Lemon Tea",
-        "price": 50
+        "price": 55
     },
     {
         "id": 47,
         "title": "Soda",
-        "price": 20
+        "price": 23
     }
 ]

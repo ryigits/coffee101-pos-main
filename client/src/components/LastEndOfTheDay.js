@@ -13,7 +13,7 @@ export default function LastEndOfTheDay() {
 
     return (
         <>
-            <div className="text-left">
+            <div className="flex-col ml-10">
                 <div className="underline">Last one:</div>
                 <div className="text-rose-500">
                     {last.tarih?.slice(0, 10)}

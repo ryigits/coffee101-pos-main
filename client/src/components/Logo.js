@@ -1,4 +1,4 @@
-export default function Logo(params) {
+export default function Logo() {
     return (
         <>
             <div className="aspect-square w-40 ml-10  ">

@@ -2,31 +2,31 @@
     {
         "id": 25,
         "title": "Hot Chocolate Curve",
-        "price": 50
+        "price": 55
     },
     {
         "id": 26,
         "title": "Hot Chocolate Top",
-        "price": 60
+        "price": 65
     },
     {
         "id": 27,
         "title": "Salep Curve",
-        "price": 50
+        "price": 55
     },
     {
         "id": 28,
         "title": "Salep Top",
-        "price": 60
+        "price": 65
     },
     {
         "id": 29,
         "title": "Turkish Coffee",
-        "price": 40
+        "price": 45
     },
     {
         "id": 30,
         "title": "Herbal Tea",
-        "price": 40
+        "price": 45
     }
 ]

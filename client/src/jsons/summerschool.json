@@ -2,46 +2,46 @@
     {
         "id": 36,
         "title": "Frapesso",
-        "price": 70
+        "price": 75
     },
     {
         "id": 37,
         "title": "Ice Americano",
-        "price": 55
+        "price": 60
     },
     {
         "id": 38,
         "title": "Ice Latte",
-        "price": 65
+        "price": 70
     },
     {
         "id": 39,
         "title": "Ice Coco Latte",
-        "price": 70
+        "price": 75
     },
     {
         "id": 40,
         "title": "Cold Brew",
-        "price": 65
+        "price": 70
     },
     {
         "id": 42,
         "title": "Ice Flat White",
-        "price": 70
+        "price": 75
     },
     {
         "id": 98,
         "title": "Affogato",
-        "price": 50
+        "price": 55
     },
     {
         "id": 99,
         "title": "Ice Cream Cup",
-        "price": 30
+        "price": 35
     },
     {
         "id": 100,
         "title": "Ice Cream Stick",
-        "price": 40
+        "price": 45
     }
 ]

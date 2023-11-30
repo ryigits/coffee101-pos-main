@@ -2,7 +2,7 @@
     {
         "id": 48,
         "title": "Slice of Cake",
-        "price": 70
+        "price": 75
     },
     {
         "id": 52,
@@ -28,21 +28,21 @@
     {
         "id": 79,
         "title": "Donut",
-        "price": 40
+        "price": 45
     },
     {
         "id": 80,
         "title": "Kruvasan",
-        "price": 45
+        "price": 50
     },
     {
         "id": 94,
         "title": "Tost",
-        "price": 40
+        "price": 45
     },
     {
         "id": 96,
         "title": "Tost + Curve FK",
-        "price": 60
+        "price": 65
     }
 ]

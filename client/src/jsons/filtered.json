@@ -2,26 +2,26 @@
     {
         "id": 31,
         "title": "Black Curve",
-        "price": 42
+        "price": 45
     },
     {
         "id": 32,
         "title": "Black Top",
-        "price": 48
+        "price": 53
     },
     {
         "id": 33,
         "title": "With Milk Curve",
-        "price": 44
+        "price": 48
     },
     {
         "id": 34,
         "title": "With Milk Top",
-        "price": 50
+        "price": 55
     },
     {
         "id": 35,
         "title": "250gr Coffee",
-        "price": 220
+        "price": 240
     }
 ]

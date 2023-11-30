@@ -49,10 +49,10 @@ export default function Menu({ order }) {
     return (
         <>
             <div className="w-full">
-                <div className="ml-40">
+                <div className="flex justify-center">
                     <NavBar handleMenu={handleMenu} />
                 </div>
-                <div className="">
+                <div className="flex flex-wrap justify-center">
                     {menu.map((product) => (
                         <Product
                             key={product.id}

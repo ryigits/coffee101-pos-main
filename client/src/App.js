@@ -16,7 +16,7 @@ function App() {
 
     return (
         <div className="bg-indigo-100 min-h-screen py-4">
-            <div className="grid grid-cols-6 justify-items-center  gap-2 h-1/3 sticky bg-indigo-100 top-0 z-50 w-full border-solid border-y-red-600/50 border-b-2 py-2">
+            <div className="grid grid-cols-6 justify-items-center  gap-2 h-1/3 sticky  top-0 z-50 w-full border-solid border-y-red-600/50 border-b-2 py-2">
                 <div className="col-start-1 col-end-2  row-start-1">
                     <DropDownMenu />
                 </div>
@@ -32,7 +32,7 @@ function App() {
                     <Total />
                 </div>
             </div>
-            <div className="flex w-full justify-center">
+            <div className="flex w-full">
                 <Routes>
                     <Route index element={<Menu order={order} />} />
                     <Route path="recent-orders" element={<RecentOrders />} />

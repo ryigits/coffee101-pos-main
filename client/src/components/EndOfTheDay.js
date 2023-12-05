@@ -68,17 +68,16 @@ export default function EndOfTheDay() {
 
     return (
         <>
-            <div className="grid grid-cols-2 gap-8 h-2/3">
+            <div className="grid grid-cols-3 gap-10">
                 <div>
                     <DayPicker mode="single" selected={selectedDay} />
                     <LastEndOfTheDay />
                     {alreadyEnd && (
-                        <div className="w-full mt-4">
-                            <Alert withBorderAccent={true} color="warning">
+                        <div className="m-32 absolute">
+                            <Alert color="failure">
                                 <span>
-                                    <span className="font-normal">
-                                        Gunsonu daha once alinmistir. Hata var
-                                        ise whatsapptan bildirin.
+                                    <span className="font-medium">
+                                        Gunsonu kaydedilmistir. Hata var ise whatsapptan bildiriniz.
                                     </span>
                                 </span>
                             </Alert>
@@ -101,7 +100,7 @@ export default function EndOfTheDay() {
                             <Alert withBorderAccent={true} color="info">
                                 <span>
                                     <span className="font-medium">
-                                        Successfull
+                                        Successfully
                                     </span>
                                     <br></br>
                                     EndofTheDay has been successfully recorded !
@@ -110,7 +109,7 @@ export default function EndOfTheDay() {
                         </div>
                     )}
                 </div>
-                <form className="flex flex-col gap-2">
+                <form className="flex flex-col gap-2 w-60">
                     {isOdtu && (
                         <div>
                             <div className="mb-2 block">

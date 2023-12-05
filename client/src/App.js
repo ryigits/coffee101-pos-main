@@ -32,7 +32,7 @@ function App() {
                     <Total />
                 </div>
             </div>
-            <div className="flex w-full">
+            <div className="flex justify-center w-full">
                 <Routes>
                     <Route index element={<Menu order={order} />} />
                     <Route path="recent-orders" element={<RecentOrders />} />
